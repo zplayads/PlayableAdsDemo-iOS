@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXr-fm-YFy">
+                                <rect key="frame" x="16" y="156" width="343" height="30"/>
+                                <state key="normal" title="request"/>
+                                <connections>
+                                    <action selector="requestAdvertising:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pa6-Rd-tBD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohy-KF-RR1">
+                                <rect key="frame" x="16" y="194" width="343" height="30"/>
+                                <state key="normal" title="present"/>
+                                <connections>
+                                    <action selector="presentAdvertising:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cu7-oT-YUy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ohy-KF-RR1" secondAttribute="trailing" constant="16" id="A2I-8q-CEP"/>
+                            <constraint firstItem="dXr-fm-YFy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="136" id="DLM-fw-pZg"/>
+                            <constraint firstItem="dXr-fm-YFy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="MIN-Se-0YT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dXr-fm-YFy" secondAttribute="trailing" constant="16" id="Wwg-jf-z6n"/>
+                            <constraint firstItem="ohy-KF-RR1" firstAttribute="top" secondItem="dXr-fm-YFy" secondAttribute="bottom" constant="8" id="k1D-uI-wY8"/>
+                            <constraint firstItem="ohy-KF-RR1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="rTb-Ot-iIr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

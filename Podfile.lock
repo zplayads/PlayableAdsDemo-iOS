@@ -1,0 +1,12 @@
+PODS:
+  - PlayableAds (1.5.6)
+
+DEPENDENCIES:
+  - PlayableAds (~> 1.5.0)
+
+SPEC CHECKSUMS:
+  PlayableAds: 2b3e6bdede63ae9232c25504b799e15f6d7a044d
+
+PODFILE CHECKSUM: 2b3d97499dbc9ebcf53926ecd058548b05b12f32
+
+COCOAPODS: 1.2.1

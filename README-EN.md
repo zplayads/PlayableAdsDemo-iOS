@@ -1,10 +1,10 @@
 ## 1.Overview
 ### 1.1 Introduction
-Integration of this SDK gives the publisher the capability to call playable ads from ZPLAY Ads into available interstitial iOS inventory globally.  This guide is designed for developers who are going to integrate the ZPLAY Ads SDK into their iOS Apps via Xcode.  Please contact support@zplayads.com if you need any assistance in this work.
+This guide is designed for developers who are going to integrate the ZPLAY Ads SDK into their iOS Apps via Xcode.  Please contact support@zplayads.com if you need any assistance in this work.
 ### 1.2 Develop Environment
-- OS：Mac OS X10.8.5 and above
-- IDE：Xcode7 and above
-- Deploy Target：iOS8 and above
+- OS: Mac OS X10.8.5 and above
+- Development environment: Xcode7 and above
+- Deploy Target: iOS8 and above
 ### 1.3 ZPLAY Ads Account Requirements
 An account is required on our platform before SDK integration can be completed.  The following App specific data items are the minimum needed to proceed.
 
@@ -13,34 +13,35 @@ An account is required on our platform before SDK integration can be completed. 
 **adUnitID**: An ID for a specific ad placement within your App, as generated for your Apps within your account on the ZPLAY Ads website. 
 ## 2.SDK integration
 
-ZPLAY Ads leverages CocoaPod, as a dependency manager for Objective-C projects, by which you can easily add or update your Playable Ads SDK.  Please follow the steps below to add the SDK.
-##### 2.1 Install CocoaPods
+ZPLAY Ads leverages CocoaPods, as a dependency manager for Objective-C projects, by which you can easily add or update your Playable Ads SDK.  Please follow the steps below to add the SDK.
+### 2.1 Install CocoaPods
 ```sh
 sudo gem install cocoapods
 ```
-##### 2.2 Create Podfile
+### 2.2 Create Podfile
+In Terminal, switch to the root folder of your iOS project, and create a Podfile there.
 ```sh
 pod init
 ```
-##### 2.3 Add Playable Ads SDK into Podfile
+### 2.3 Add Playable Ads SDK into Podfile
 ```sh
-pod 'PlayableAds'
+pod 'PlayableAds', '~>1.5.6'
 ```
-##### 2.4 Install Playable Ads SDK
+### 2.4 Install Playable Ads SDK
 ```sh
 pod install
 ```
 ## 3. Access code
-**3.1 Initialize SDK**
+### 3.1 Initialize SDK
 
-To pre-load an ad may take several seconds, so it’s recommended to initialize the SDK and load ads as early as possible. When you initialize the SDK, you need to provide your APPID and adUnitID (as previously registered on en.ZPLAYAds.com) into the marked places.
+To pre-load an ad may take several seconds, so it’s recommended to initialize the SDK and load ads as early as possible. When you initialize the SDK, you need to provide your APPID and adUnitID (as previously registered on https://www.zplayads.com/en/index.html) into the relevant places.
 
 ```objective-c
 @import PlayableAds;
 
 @interface ViewController () <PlayableAdsDelegate>
 
-// Create ad and load
+// Create an ad and start preloading
 - (PlayableAds *)createAndLoadPlayableAds {
     PlayableAds *ad = [[PlayableAds alloc] initWithAdUnitID:@"Your Ad-Unit-ID" appID:@"Your App-ID" rootViewController:self];
     ad.delegate = self;
@@ -49,16 +50,8 @@ To pre-load an ad may take several seconds, so it’s recommended to initialize 
     return ad;
 }
 ```
-**3.2 Ad ready for display?**
 
-You can judge the availability of an ad by this callback.  Then you’ll be able to manage your game’s settings according to the ad being ready or not.
-```objective-c
-- (void)playableAdsDidLoad:(PlayableAds *)ads {
-    NSLog(@"playable ads did load");
-}
-```
-
-**3.3 Show ad**
+### 3.2 Show Ads
 
 When an ad is ready to display, you can show it using following method.
 ```objective-c
@@ -73,9 +66,14 @@ When an ad is ready to display, you can show it using following method.
     [self.ad present];
 }
 ```
-
-**3.4 Obtain rewarded**
-
+### 3.3 Ad ready foe display?
+You can judge the availability of an ad by this callback.  Then you’ll be able to manage your game’s settings according to the ad being ready or not.
+```objective-c
+- (void)playableAdsDidLoad:(PlayableAds *)ads {
+    NSLog(@"playable ads did load");
+}
+```
+### 3.4 Obtain rewards
 To use ZPLAY Ads as a rewarded ad, it’s very important to give the reward properly. To do so, please use the following callback code. 
 
 ```objective-c
@@ -186,4 +184,15 @@ To use ZPLAY Ads as a rewarded ad, it’s very important to give the reward prop
 
 @end
 ```
-
+## 5 Notices
+### 5.1 Receiving error 400
+Check if the Display Name of your project is set properly.
+### 5.2 Black screen displayed when showing an ad
+There may be a http link in the ad. To remedy, please add following codes in info.plist
+```objective-c
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+	<true/>
+</dict>
+```

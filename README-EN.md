@@ -8,11 +8,10 @@ This guide is designed for developers who are going to integrate the ZPLAY Ads S
 ### 1.3 ZPLAY Ads Account Requirements
 An account is required on our platform before SDK integration can be completed.  The following App specific data items are the minimum needed to proceed.
 
-**APPID**: An ID for your App, obtained when setting up the App for monetization within your account on the ZPLAY Ads website.
+**APPID**: An ID for your App, obtained when setting up the App for monetization within your account on the ZPLAY Ads platform website.
 
-**adUnitID**: An ID for a specific ad placement within your App, as generated for your Apps within your account on the ZPLAY Ads website. 
+**adUnitID**: An ID for a specific ad placement within your App, as generated for your Apps within your account on the ZPLAY Ads platform website. 
 ## 2.SDK integration
-
 ZPLAY Ads leverages CocoaPods, as a dependency manager for Objective-C projects, by which you can easily add or update your Playable Ads SDK.  Please follow the steps below to add the SDK.
 ### 2.1 Install CocoaPods
 ```sh

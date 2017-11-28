@@ -77,7 +77,7 @@ To use ZPLAY Ads as a rewarded ad, it’s very important to give the reward prop
 
 ```objective-c
 #pragma mark - PlayableAdsDelegate
-// Reward users, when you want to reward users, you are available to determine whether the bonus has been realized via this callback.
+// Give reward, use this callback to judge if the reward is available.
 - (void)playableAdsDidRewardUser:(PlayableAds *)ads {
     NSLog(@"playable ads did reward");
 }
@@ -100,19 +100,32 @@ To use ZPLAY Ads as a rewarded ad, it’s very important to give the reward prop
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    // preload ad
     self.ad = [self createAndLoadPlayableAds];
 }
 
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)requestAdvertising:(UIButton *)sender {
+    NSLog(@"request advertising.");
+    [self.ad loadAd];
+}
+
+- (IBAction)presentAdvertising:(UIButton *)sender {
+    [self showAd];
+}
+
+// Create an ad and start preloading
 - (PlayableAds *)createAndLoadPlayableAds {
-    PlayableAds *ad = [[PlayableAds alloc] initWithAdUnitID:@"Your Ad-Unit-ID" appID:@"Your App-ID" rootViewController:self];
+    PlayableAds *ad = [[PlayableAds alloc] initWithAdUnitID:@"iOSDemoAdUnit" appID:@"iOSDemoApp" rootViewController:self];
     ad.delegate = self;
-    [ad loadAd];
-    
     return ad;
 }
 
+// Show the ad
 - (void)showAd {
     // ad is not ready, do nothing
     if (!self.ad.ready) {
@@ -122,65 +135,22 @@ To use ZPLAY Ads as a rewarded ad, it’s very important to give the reward prop
     // show the ad
     [self.ad present];
 }
+ 
 
 #pragma mark - PlayableAdsDelegate
 - (void)playableAdsDidRewardUser:(PlayableAds *)ads {
-    NSLog(@"playable ads did reward");
+    NSLog(@"Advertising successfully presented");
 }
 
+/// Tells the delegate that succeeded to load ad.
 - (void)playableAdsDidLoad:(PlayableAds *)ads {
-    NSLog(@"playable ads did load");
+    NSLog(@"Advertising is ready to play.");
 }
 
-- (void)playableAdsDidFailToLoadWithError:(NSError *)error {
-    NSLog(@"playable ads did fail to load: %@", error);
-    
-    // preload ad after previous ad request failed for 5 seconds
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        weakSelf.ad = [weakSelf createAndLoadPlayableAds];
-    });
+/// Tells the delegate that failed to load ad.
+- (void)playableAds:(PlayableAds *)ads didFailToLoadWithError:(NSError *)error {
+    NSLog(@"There was a problem loading advertising: %@", error);
 }
-
-- (void)playableAdsWillPresentScreen:(PlayableAds *)ads {
-    NSLog(@"playable ads will present screen");
-}
-
-- (void)playableAdsDidPresentScreen:(PlayableAds *)ads {
-    NSLog(@"playable ads did present screen");
-}
-
-- (void)playableAdsDidStartPlaying:(PlayableAds *)ads {
-    NSLog(@"playable ads did start playing");
-}
-
-- (void)playableAdsDidEndPlaying:(PlayableAds *)ads {
-    NSLog(@"playable ads did end playing");
-}
-
-- (void)playableAdsDidPresentLandingPage:(PlayableAds *)ads {
-    NSLog(@"playable ads did present landing page");
-}
-
-- (void)playableAdsWillDismissScreen:(PlayableAds *)ads {
-    NSLog(@"playable ads will dismiss screen");
-}
-
-- (void)playableAdsDidDismissScreen:(PlayableAds *)ads {
-    NSLog(@"playable ads did dismiss screen");
-    
-    // preload ad right after previous ad is dismissed
-    self.ad = [self createAndLoadPlayableAds];
-}
-
-- (void)playableAdsLandingPageDidClick:(PlayableAds *)ads {
-    NSLog(@"playable ads landing page did click");
-}
-
-- (void)playableAdsWillLeaveApplication:(PlayableAds *)ads {
-    NSLog(@"playable ads will leave application");
-}
-
 @end
 ```
 ## 5 Notices

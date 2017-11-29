@@ -13,6 +13,7 @@
 @interface ViewController () <PlayableAdsDelegate>
 
 @property (nonatomic) PlayableAds *ad;
+@property (weak, nonatomic) IBOutlet UILabel *logLabel;
 
 @end
 
@@ -22,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.ad = [self createAndLoadPlayableAds];
+    [_logLabel sizeToFit];
 }
 
 
@@ -31,12 +33,18 @@
 }
 
 - (IBAction)requestAdvertising:(UIButton *)sender {
-    NSLog(@"request advertising.");
+    [self addLog:@"request advertising."];
     [self.ad loadAd];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 - (IBAction)presentAdvertising:(UIButton *)sender {
     [self showAd];
+}
+
+- (void) addLog: (NSString*) log {
+    NSString *newLineLog = [log stringByAppendingString:@"\n"];
+    _logLabel.text = [newLineLog stringByAppendingString: _logLabel.text];
 }
 
 // 创建广告并加载
@@ -50,26 +58,31 @@
 - (void)showAd {
     // ad is not ready, do nothing
     if (!self.ad.ready) {
+        [self addLog:@"advertising has not ready."];
         return;
     }
     
+    [self addLog:@"show advertising"];
     // show the ad
     [self.ad present];
 }
 
 #pragma mark - PlayableAdsDelegate
 - (void)playableAdsDidRewardUser:(PlayableAds *)ads {
-    NSLog(@"Advertising successfully presented");
+    [self addLog:@"Advertising successfully presented"];
 }
 
 /// Tells the delegate that succeeded to load ad.
 - (void)playableAdsDidLoad:(PlayableAds *)ads {
-    NSLog(@"Advertising is ready to play.");
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self addLog:@"Advertising is ready to play."];
 }
 
 /// Tells the delegate that failed to load ad.
 - (void)playableAds:(PlayableAds *)ads didFailToLoadWithError:(NSError *)error {
-    NSLog(@"There was a problem loading advertising: %@", error);
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self addLog: [@"\nThere was a problem loading advertising:" stringByAppendingString:[error localizedDescription] ]];
+    NSLog(@"playableAds error:\n%@", error);
 }
 
 @end

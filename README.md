@@ -21,7 +21,7 @@ pod init
 ```
 ##### 2.3. 将Playable Ads SDK加入到Podfile文件
 ```sh
-pod 'PlayableAds', '~>1.5.0'
+pod 'PlayableAds', '~>1.5.7'
 ```
 ##### 2.4. 安装Playable Ads SDK
 ```sh

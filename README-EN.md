@@ -65,7 +65,7 @@ When an ad is ready to display, you can show it using following method.
     [self.ad present];
 }
 ```
-### 3.3 Ad ready foe display?
+### 3.3 Ad ready for display?
 You can judge the availability of an ad by this callback.  Then you’ll be able to manage your game’s settings according to the ad being ready or not.
 ```objective-c
 - (void)playableAdsDidLoad:(PlayableAds *)ads {

@@ -28,7 +28,7 @@ pod 'PlayableAds', '~>1.5.7'
 pod install
 ```
 ## 3.接入代码
-**初始化SDK**
+**3.1 初始化SDK**
 
 初始化ZPLAYAds广告，并显示视频。
 > 广告预加载需要几秒时间，建议您在应用启动后尽早初始化及加载ZPLAYAds广告。初始化SDK时需要将您在ZPLAYAds平台申请的APPID和adUnitID填入相应的位置，
@@ -49,7 +49,7 @@ ad.delegate = self;
 return ad;
 }
 ```
-**展示广告**
+**3.2 展示广告**
 
 当广告已经准备就绪后，您可以使用以下方法播放广告：
 ```objective-c
@@ -64,7 +64,7 @@ return;
 [self.ad present];
 }
 ```
-**判断广告是否加载完成**
+**3.3 判断广告是否加载完成**
 
 您可以通过此回调判断是否有广告可以播放。
 > 可通过此方法进行游戏内设置的判断。
@@ -74,7 +74,7 @@ return;
 NSLog(@"playable ads did load");
 }
 ```
-**获取奖励**
+**3.4 获取奖励**
 
 视频奖励，您可以实现此回调给用户下发奖励。
 > 当您在激励视频广告位上使用ZPLAYAds时，最重要的是奖励看完广告的用户，要奖励用户请实现此回调。
@@ -86,11 +86,83 @@ NSLog(@"playable ads did load");
 NSLog(@"playable ads did reward");
 }
 ```
-## 4 注意事项
+## 4 示例代码
 
-1. 请求广告返回400错误：检查工程是否设置了 **Display Name**
+```objective-c
+#import "ViewController.h"
 
-2. 请求成功后，展示广告时出现黑屏：广告中可能出现http链接，在info.plist中添加以下代码
+@import PlayableAds;
+
+@interface ViewController () <PlayableAdsDelegate>
+
+@property (nonatomic) PlayableAds *ad;
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+    self.ad = [self createAndLoadPlayableAds];
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)requestAdvertising:(UIButton *)sender {
+    NSLog(@"request advertising.");
+    [self.ad loadAd];
+}
+
+- (IBAction)presentAdvertising:(UIButton *)sender {
+    [self showAd];
+}
+
+// Create an ad and start preloading
+- (PlayableAds *)createAndLoadPlayableAds {
+    PlayableAds *ad = [[PlayableAds alloc] initWithAdUnitID:@"iOSDemoAdUnit" appID:@"iOSDemoApp" rootViewController:self];
+    ad.delegate = self;
+    return ad;
+}
+
+// Show the ad
+- (void)showAd {
+    // ad is not ready, do nothing
+    if (!self.ad.ready) {
+        return;
+    }
+    
+    // show the ad
+    [self.ad present];
+}
+ 
+
+#pragma mark - PlayableAdsDelegate
+- (void)playableAdsDidRewardUser:(PlayableAds *)ads {
+    NSLog(@"Advertising successfully presented");
+}
+
+/// Tells the delegate that succeeded to load ad.
+- (void)playableAdsDidLoad:(PlayableAds *)ads {
+    NSLog(@"Advertising is ready to play.");
+}
+
+/// Tells the delegate that failed to load ad.
+- (void)playableAds:(PlayableAds *)ads didFailToLoadWithError:(NSError *)error {
+    NSLog(@"There was a problem loading advertising: %@", error);
+}
+@end
+```
+
+## 5 注意事项
+
+5.1. 请求广告返回400错误：检查工程是否设置了 **Display Name**
+
+5.2. 请求成功后，展示广告时出现黑屏：广告中可能出现http链接，在info.plist中添加以下代码
 ```
 <key>NSAppTransportSecurity</key>
 <dict>

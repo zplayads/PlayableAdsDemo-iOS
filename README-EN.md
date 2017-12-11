@@ -165,3 +165,8 @@ There may be a http link in the ad. To remedy, please add following codes in inf
 	<true/>
 </dict>
 ```
+
+### 5.3 Request Ads ASAP
+To ensure the ad resource can be successfully loaded, it’s encouraged to request ads as soon as possible.
+### 5.4 Permissions
+Make sure your app was granted Phone State permission and Storage Permission, otherwise there may be no ads in your app.

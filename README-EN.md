@@ -165,8 +165,11 @@ There may be a http link in the ad. To remedy, please add following codes in inf
 	<true/>
 </dict>
 ```
-
 ### 5.3 Request Ads ASAP
 To ensure the ad resource can be successfully loaded, it’s encouraged to request ads as soon as possible.
 ### 5.4 Permissions
 Make sure your app was granted Phone State permission and Storage Permission, otherwise there may be no ads in your app.
+### 5.5 Request Next Ad
+* Request failed: Reload in onLoadFailed () method, please determine the reason for the failure, to avoid looping onLoadFailed () method. For example, if there is no network, the onLoadFailed () method will be executed. If you request the next advertisement immediately, advertisement will request failed continuously, causing a waste of resources.
+
+* Ad displayed completely: Request again in the playableAdsIncentive () method. Ads can not be requested in the onVideoFinished () method, ads are still in a filled state when the onVideoFinished () method is executed, and ads will not be requested again.

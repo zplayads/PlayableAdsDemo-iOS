@@ -160,9 +160,9 @@ NSLog(@"playable ads did reward");
 
 ## 5 注意事项
 
-5.1. 请求广告返回400错误：检查工程是否设置了 **Display Name**
+5.1 请求广告返回400错误：检查工程是否设置了 **Display Name**
 
-5.2. 请求成功后，展示广告时出现黑屏：广告中可能出现http链接，在info.plist中添加以下代码
+5.2 请求成功后，展示广告时出现黑屏：广告中可能出现http链接，在info.plist中添加以下代码
 ```
 <key>NSAppTransportSecurity</key>
 <dict>
@@ -170,3 +170,8 @@ NSLog(@"playable ads did reward");
 <true/>
 </dict>
 ```
+
+5.3 请求下一条广告
+* 请求失败时：在onLoadFailed()方法中重新加载，请自行判断失败原因，避免循环执行onLoadFailed()方法。例，无网络时请求广告会执行onLoadFailed()方法，若此时立刻发起下一个广告请求，出现广告持续请求失败的情况，造成资源浪费。
+
+* 广告展示完成时: 在playableAdsIncentive()方法中再次请求。不可在onVideoFinished()方法中请求广告，onVideoFinished()方法执行时广告还处于filled状态，不会再次请求广告。

@@ -49,7 +49,11 @@ To pre-load an ad may take several seconds, so it’s recommended to initialize 
     return ad;
 }
 ```
+Note: You can use the following test id when you are testing. Test id won't generate revenue, please use official id when you release your App.
 
+|OS|  App_ID  |  Ad_Unit_id|
+|--------|----------|------------|
+|iOS|A650AB0D-7BFC-2A81-3066-D3170947C3DA|BAE5DAAC-04A2-2591-D5B0-38FA846E45E7|
 ### 3.2 Show Ads
 
 When an ad is ready to display, you can show it using following method.

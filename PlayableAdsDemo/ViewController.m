@@ -10,10 +10,11 @@
 
 @import PlayableAds;
 
-@interface ViewController () <PlayableAdsDelegate>
+@interface ViewController () <PlayableAdsDelegate, UITextFieldDelegate>
 
 @property (nonatomic) PlayableAds *ad;
 @property (weak, nonatomic) IBOutlet UILabel *logLabel;
+@property (weak, nonatomic) IBOutlet UITextField *uidText;
 
 @end
 
@@ -24,6 +25,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.ad = [self createAndLoadPlayableAds];
     [_logLabel sizeToFit];
+    _uidText.delegate = self;
 }
 
 
@@ -51,6 +53,7 @@
 - (PlayableAds *)createAndLoadPlayableAds {
     PlayableAds *ad = [[PlayableAds alloc] initWithAdUnitID:@"iOSDemoAdUnit" appID:@"iOSDemoApp"];
     ad.delegate = self;
+    ad.autoLoad = YES;
     return ad;
 }
 
@@ -83,6 +86,18 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     [self addLog: [@"\nThere was a problem loading advertising:" stringByAppendingString:[error localizedDescription] ]];
     NSLog(@"playableAds error:\n%@", error);
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+// It is important for you to hide the keyboard
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

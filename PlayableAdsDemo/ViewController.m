@@ -28,6 +28,7 @@
     // init Playable Advertising.
     _ad = [[PlayableAds alloc] initWithAdUnitID:@"iOSDemoAdUnit" appID:@"iOSDemoApp"];
     _ad.delegate = self;
+    [self requestAdvertising:nil];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -90,6 +91,8 @@
     [self addLog:@"playableAdsDidLoad"];
     if(!_ad.autoLoad){
         [_requestAd setEnabled:YES];
+    }else {
+        [_requestAd setEnabled:NO];
     }
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }

@@ -1,4 +1,4 @@
-## 1.概述 v2.0.0
+## 1.概述 v2.0.1
 ### 1.1.面向读者
 本产品面向需要在Xcode工程中接入ZPLAYAds SDK的开发人员。
 ### 1.2.开发环境
@@ -21,7 +21,7 @@ pod init
 ```
 ##### 2.3. 将Playable Ads SDK加入到Podfile文件
 ```sh
-pod 'PlayableAds', '~>2.0.0'
+pod 'PlayableAds', '2.0.1'
 ```
 ##### 2.4. 安装Playable Ads SDK
 ```sh
@@ -178,7 +178,7 @@ NSLog(@"playable ads did reward");
 ```
 
 5.3 请求下一条广告
-* 可通过```playableAd.autoload = YES```来设置SDK自动加载下一条广告，如果自动加载失败会在5s后重试。默认为不自动加载。
+* 可通过```playableAd.autoload = YES```来设置SDK自动加载下一条广告，如果自动加载失败会在5s后重试。默认为自动加载广告。
 
 5.4 新的广告形式
 可在申请广告位时选择申请可玩插屏广告，该广告在播放到规定时间后会出现关闭按钮，点击可关闭广告。可玩插屏广告除关闭后不会触发```- (void)playableAdsDidRewardUser:(PlayableAds *)ads```方法外，其它方法调用与回调与可玩广告一致。

@@ -6,7 +6,7 @@ target 'PlayableAdsDemo' do
   # use_frameworks!
 
   # Pods for PlayableAdsDemo
-  pod 'PlayableAds', '2.0.1'
+  pod 'PlayableAds', '2.0.2'
 
   target 'PlayableAdsDemoTests' do
     inherit! :search_paths

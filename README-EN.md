@@ -1,4 +1,4 @@
-## 1.Overview v2.0.1
+## 1.Overview v2.0.2
 ### 1.1 Introduction
 This guide is designed for developers who are going to integrate the ZPLAY Ads SDK into their iOS Apps via Xcode.  Please contact support@zplayads.com if you need any assistance in this work.
 ### 1.2 Develop Environment
@@ -24,7 +24,7 @@ pod init
 ```
 ### 2.3 Add Playable Ads SDK into Podfile
 ```sh
-pod 'PlayableAds', '~>2.0.1'
+pod 'PlayableAds', '~>2.0.2'
 ```
 ### 2.4 Install Playable Ads SDK
 ```sh

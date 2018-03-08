@@ -162,7 +162,7 @@ To use ZPLAY Ads as a rewarded ad, it's very important to give the reward proper
 ## 5 Notices
 ### 5.1 Receiving error 400
 
-Check the project, has the projrct set a Display Name.
+Check the project, has the project set a Display Name.
 ### 5.2 Black screen displayed when showing an ad
 There may be a http link in the ad. To remedy, please add following codes in info.plist
 ```objective-c
@@ -173,15 +173,11 @@ There may be a http link in the ad. To remedy, please add following codes in inf
 </dict>
 ```
 ### 5.3 Request Ads ASAP
-To ensure the ad resource can be successfully loaded, it's encouraged to request ads as soon as possible.
-
+To ensure the ad resource can be successfully loaded, it’s encouraged to request ads as soon as possible.
 ### 5.4 Request Next Ad
-* The ad will automatically load the next ad when it is displayed successfully or the request failed, and will reload again after 5s if the autoloading fails.
+* When an ad is completed or a request fails, the SDK will try to request the next ad automatically. If this request fails, it will retry in 5 seconds.
 
-* If you need to load the next ad manually, you can set the SDK does not automatically load the next ad according method ```playableAd.autoload = NO```
-* If you need to load the next ad automatically, you can set the SDK does not automatically load the next ad according method ```playableAd.autoload = NO```
-
-### 5.5 Interstitial And Rewarded video
-
-* Starting with version 2.0.1, you can choose interstitial ad or rewarded video when applying for adunit. If the ad unit is Interstitial, you can close ad midway and without any rewards. If the ad unit is rewarded, the ad can not be closed halfway and will give user a reward callback.
-*  Rewarded video and interstitial have same callback especially interstitial does not will call```- (void)playableAdsDidRewardUser:(PlayableAds *)ads```method.
+* If you want to request the next ad manually, you can set ```playableAd.autoload = NO``` to disable auto-request. And this is the default setting.
+### 5.5 Interstitial and Rewarded Video
+* From v2.0.1, you can choose to act as interstitial or rewarded videos when you apply the ad unit. If you act as interstitials, the ad can be terminated during playing and no rewards will be given. If you act as rewarded videos, the ad can't be terminated during playing, and a reward will be given after completed.
+* For interstitials, all the methods are just the same with rewarded videos, except for ```(void)playableAdsDidRewardUser:(PlayableAds *)ads```, which won't be triggered.

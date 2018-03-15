@@ -26,7 +26,7 @@
     [super viewDidLoad];
     
     // init Playable Advertising.
-    _ad = [[PlayableAds alloc] initWithAdUnitID:@"iOSDemoAdUnit" appID:@"iOSDemoApp"];
+    _ad = [[PlayableAds alloc] initWithAdUnitID:@"BAE5DAAC-04A2-2591-D5B0-38FA846E45E7" appID:@"A650AB0D-7BFC-2A81-3066-D3170947C3DA"];
     _ad.delegate = self;
     [self requestAdvertising:nil];
 }

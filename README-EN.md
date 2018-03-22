@@ -1,4 +1,4 @@
-## 1.Overview v2.0.2
+## 1.Overview v2.0.5
 ### 1.1 Introduction
 This guide is designed for developers who are going to integrate the ZPLAY Ads SDK into their iOS Apps via Xcode.  Please contact support@zplayads.com if you need any assistance in this work.
 ### 1.2 Develop Environment
@@ -24,7 +24,7 @@ pod init
 ```
 ### 2.3 Add Playable Ads SDK into Podfile
 ```sh
-pod 'PlayableAds', '~>2.0.2'
+pod 'PlayableAds', '~>2.0.5'
 ```
 ### 2.4 Install Playable Ads SDK
 ```sh
@@ -179,5 +179,5 @@ To ensure the ad resource can be successfully loaded, it’s encouraged to reque
 
 * If you want to request the next ad manually, you can set ```playableAd.autoload = NO``` to disable auto-request. And this is the default setting.
 ### 5.5 Interstitial and Rewarded Video
-* From v2.0.1, you can choose to act as interstitial or rewarded videos when you apply the ad unit. If you act as interstitials, the ad can be terminated during playing and no rewards will be given. If you act as rewarded videos, the ad can't be terminated during playing, and a reward will be given after completed.
+* From v2.0.3, you can choose to act as interstitial or rewarded videos when you apply the ad unit. If you act as interstitials, the ad can be terminated during playing and no rewards will be given. If you act as rewarded videos, the ad can't be terminated during playing, and a reward will be given after completed.
 * For interstitials, all the methods are just the same with rewarded videos, except for ```(void)playableAdsDidRewardUser:(PlayableAds *)ads```, which won't be triggered.

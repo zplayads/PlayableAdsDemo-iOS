@@ -33,12 +33,12 @@ pod install
 #### 2.2.2 添加到工程
 将上一步得到的PlayableAds.framework添加到项目中 ![图片](./tutorialImg/manual-add-files.png)
 ![图片](./tutorialImg/manual-add-files2.png)
-#### 2.2.3 添加PlayableAds的文件
+#### 2.2.3 添加PlayableAds的依赖文件
 PlayableAds依赖的framework有：UIKit, Foundation, WebKit, SystemConfiguration, MobileCoreServices, AdSupport, CoreLocation, CoreTelephony, StoreKit, Security。
 
 PlayableAds依赖的libraries有：xml2.
 
-导入后如图所示：![图片](./tutorialImg/manual-add-framework-libs.png)
+导入后如图所示：![图片](./tutorialImg/manual-add-framework-libs.png)
 #### 2.2.4 其它设置
 在项目中找到Build Settings页面，在Search Paths下的Header Search Paths下添加 $(SDKROOT)/usr/include/libxml2 ， 在Linking下的Other Linker Flags中添加 -ObjC 
 ![图片](./tutorialImg/manual-add-header-search-paths.png)

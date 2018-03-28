@@ -10,23 +10,39 @@
 
 **adUnitID**：广告位ID，是您在ZPLAYAds告平台为您的应用创建的广告位置的ID。
 ## 2.SDK接入
-CocoaPod是Objective-C的依赖管理器，可以轻松添加和更新Playable Ads SDK。
-##### 2.1. 安装CocoaPods/Install Cocoapods
+### 2.1 CocoaPods(推荐)
+##### 2.1.1 安装CocoaPods/Install Cocoapods
 ```sh
 sudo gem install cocoapods
 ```
-##### 2.2. 从终端切换至iOS项目根目录下，创建Podfile文件
+##### 2.1.2 从终端切换至iOS项目根目录下，创建Podfile文件
 ```sh
 pod init
 ```
-##### 2.3. 将Playable Ads SDK加入到Podfile文件
+##### 2.1.3 将Playable Ads SDK加入到Podfile文件
 ```sh
 pod 'PlayableAds', '~>2.0.5'
 ```
-##### 2.4. 安装Playable Ads SDK
+##### 2.1.4 安装Playable Ads SDK
 ```sh
 pod install
 ```
+### 2.2 手动集成PlayableAds SDK
+#### 2.2.1 下载PlayableAds sdk 
+在[此处](http://wiki.zplay.cn/pages/viewpage.action?pageId=27331496&preview=%2F27331496%2F27985592%2FPlayableAds-v2.0.5.zip)可以下载到PlayableAds SDK，下载完成后解压.zip文件可得到PlayableAds.framework文件
+#### 2.2.2 添加到工程
+将上一步得到的PlayableAds.framework添加到项目中 ![图片](./tutorialImg/manual-add-files.png)
+![图片](./tutorialImg/manual-add-files2.png)
+#### 2.2.3 添加PlayableAds的文件
+PlayableAds依赖的framework有：UIKit, Foundation, WebKit, SystemConfiguration, MobileCoreServices, AdSupport, CoreLocation, CoreTelephony, StoreKit, Security。
+
+PlayableAds依赖的libraries有：xml2.
+
+导入后如图所示：![图片](./tutorialImg/manual-add-framework-libs.png)
+#### 2.2.4 其它设置
+在项目中找到Build Settings页面，在Search Paths下的Header Search Paths下添加 $(SDKROOT)/usr/include/libxml2 ， 在Linking下的Other Linker Flags中添加 -ObjC 
+![图片](./tutorialImg/manual-add-header-search-paths.png)
+![图片](./tutorialImg/manual-add-other-linker-flags.png)
 ## 3.接入代码
 **3.1 初始化SDK**
 
@@ -62,13 +78,13 @@ return ad;
 ```objective-c
 // 展示广告
 - (void)showAd {
-// ad is not ready, do nothing
-if (!self.ad.ready) {
-return;
-}
+    // ad is not ready, do nothing
+    if (!self.ad.ready) {
+        return;
+    }
 
-// show the ad
-[self.ad present];
+    // show the ad
+    [self.ad present];
 }
 ```
 **3.3 判断广告是否加载完成**
@@ -78,7 +94,7 @@ return;
 
 ```objective-c
 - (void)playableAdsDidLoad:(PlayableAds *)ads {
-NSLog(@"playable ads did load");
+    NSLog(@"playable ads did load");
 }
 ```
 **3.4 获取奖励**
@@ -90,7 +106,7 @@ NSLog(@"playable ads did load");
 #pragma mark - PlayableAdsDelegate
 // 奖励用户，当您需要给用户激励时，可使用此回调判断是否有奖励下发。
 - (void)playableAdsDidRewardUser:(PlayableAds *)ads {
-NSLog(@"playable ads did reward");
+    NSLog(@"playable ads did reward");
 }
 ```
 ## 4 示例代码

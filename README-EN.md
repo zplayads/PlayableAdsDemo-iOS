@@ -1,4 +1,4 @@
-## 1. Overview v2.0.5
+## 1. Overview V2.0.5
 ### 1.1 Introduction
 This guide is designed for the developers who are going to integrate ZPLAY Ads SDK into their Xcode project.
 ### 1.2 Develop Environment
@@ -11,13 +11,12 @@ This guide is designed for the developers who are going to integrate ZPLAY Ads S
 
 **adUnitID**: ID for a specific ad placement within your App, as generated for your Apps within your account on ZPLAY Ads platform.  
 ## 2.SDK Integration
-### 2.1 2.1 CocoaPods(recommended)
+### 2.1 CocoaPods(recommended)
 #### 2.1.1 Install CocoaPods 
 ```sh
 sudo gem install cocoapods
 ```
 #### 2.1.2 Switch terminal to root directory of iOS project, create podfile.
-In Terminal, switch to the root folder of your iOS project, and create a Podfile there.
 ```sh
 pod init
 ```
@@ -47,8 +46,8 @@ Find Build Settings page in the project, add $(SDKROOT)/usr/include/libxml2 into
 ![图片](./tutorialImg/manual-add-other-linker-flags.png)
 ## 3. Access code
 ### 3.1 Initialize SDK
-
-To pre-load an ad may take several seconds, so it’s recommended to initialize the SDK and load ads as early as possible. Please fill in the APPID and adUnitID you obtained on ZPLAY Ads platform When initializing the SDK.
+Initialize ZPLAY Ads, show ad.
+> To pre-load an ad may take several seconds, so it’s recommended to initialize the SDK and load ads as early as possible. Please fill in the APPID and adUnitID you obtained on ZPLAY Ads platform When initializing the SDK.
 
 
 ```objective-c
@@ -199,5 +198,5 @@ To ensure the ad can be loaded successfully, you are suggested to request ads AS
 
 * If you want to request the next ad manually, please set ```playableAd.autoload = NO``` to disable auto-loading. Auto-loading is the default setting.
 ### 5.5 Interstitial and Rewarded Video
-* From v2.0.3, you can choose to act as interstitial or rewarded videos when applying for ad unit. If interstitial, the ad can be terminated during playing and no rewards will be given. If rewarded video, the ad can't be terminated during playing, and a reward will be given after playing.
+* From v2.0.3, you can choose to act as interstitial or rewarded video when applying for ad unit. If interstitial, the ad can be terminated during playing and no rewards will be given. If rewarded video, the ad can't be terminated during playing, and a reward will be given after playing.
 * Except```- (void)playableAdsDidRewardUser:(PlayableAds *)ads```, which will not be triggered, all call and callback methods of interstitial are the same as those of rewarded video. 

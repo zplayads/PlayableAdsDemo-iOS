@@ -1,39 +1,55 @@
-## 1.Overview v2.0.5
+## 1. Overview v2.0.5
 ### 1.1 Introduction
-This guide is designed for developers who are going to integrate the ZPLAY Ads SDK into their iOS Apps via Xcode.  Please contact support@zplayads.com if you need any assistance in this work.
+This guide is designed for the developers who are going to integrate ZPLAY Ads SDK into their Xcode project.
 ### 1.2 Develop Environment
 - OS: Mac OS X10.8.5 and above
 - Development environment: Xcode7 and above
-- Deploy Target: iOS8 and above
-### 1.3 ZPLAY Ads Account Requirements
-An account is required on our platform before SDK integration can be completed.  The following App specific data items are the minimum needed to proceed.
+- Deployment Target: iOS8 and above
+### 1.3 Terms
 
-**APPID**: An ID for your App, obtained when setting up the App for monetization within your account on the ZPLAY Ads platform website.
+**APPID**: ID for your Application, obtained when setting up the app within your account on ZPLAY Ads platform.
 
-**adUnitID**: An ID for a specific ad placement within your App, as generated for your Apps within your account on the ZPLAY Ads platform website. 
-## 2.SDK integration
-ZPLAY Ads leverages CocoaPods, as a dependency manager for Objective-C projects, by which you can easily add or update your Playable Ads SDK.  Please follow the steps below to add the SDK.
-### 2.1 Install CocoaPods
+**adUnitID**: ID for a specific ad placement within your App, as generated for your Apps within your account on ZPLAY Ads platform.  
+## 2.SDK Integration
+### 2.1 2.1 CocoaPods(recommended)
+#### 2.1.1 Install CocoaPods 
 ```sh
 sudo gem install cocoapods
 ```
-### 2.2 Create Podfile
+#### 2.1.2 Switch terminal to root directory of iOS project, create podfile.
 In Terminal, switch to the root folder of your iOS project, and create a Podfile there.
 ```sh
 pod init
 ```
-### 2.3 Add Playable Ads SDK into Podfile
+#### 2.1.3 Add ZPLAY Ads SDK into Podfile
 ```sh
 pod 'PlayableAds', '~>2.0.5'
 ```
-### 2.4 Install Playable Ads SDK
+##### 2.1.4 Install ZPLAY Ads SDK
 ```sh
 pod install
 ```
+### 2.2 Manual integration
+#### 2.2.1 Download ZPLAY Ads SDK
+Download ZPLAY Ads SDK [HERE](http://wiki.zplay.cn/pages/viewpage.action?pageId=27331496&preview=%2F27331496%2F27985592%2FPlayableAds-v2.0.5.zip). When completed, please unzip .zip file to obtain PlayableAds.framework.
+#### 2.2.2 Add to project
+Add the PlayableAds.framework you obtained in 2.2.1 to project.![图片](./tutorialImg/manual-add-files.png)
+![图片](./tutorialImg/manual-add-files2.png)
+#### 2.2.3 Add the dependencies of ZPLAY Ads
+The dependency frameworks of ZPLAY Ads consist of UIKit, Foundation, WebKit, SystemConfiguration, MobileCoreServices, AdSupport, CoreLocation, CoreTelephony, StoreKit, Security.
+
+The dependency libraries of ZPLAY Ads is xml2.
+
+After importing: ![图片](./tutorialImg/manual-add-framework-libs.png)
+#### 2.2.4 Others
+Find Build Settings page in the project, add $(SDKROOT)/usr/include/libxml2 into Header Search Paths under Search Paths, and add -ObjC into Other Linker Flags under Linking.
+![图片](./tutorialImg/manual-add-header-search-paths.png)
+![图片](./tutorialImg/manual-add-other-linker-flags.png)
 ## 3. Access code
 ### 3.1 Initialize SDK
 
-To pre-load an ad may take several seconds, so it’s recommended to initialize the SDK and load ads as early as possible. When you initialize the SDK, you need to provide your APPID and adUnitID (as previously registered on https://www.zplayads.com/en/index.html) into the relevant places.
+To pre-load an ad may take several seconds, so it’s recommended to initialize the SDK and load ads as early as possible. Please fill in the APPID and adUnitID you obtained on ZPLAY Ads platform When initializing the SDK.
+
 
 ```objective-c
 @import PlayableAds;
@@ -49,7 +65,7 @@ To pre-load an ad may take several seconds, so it’s recommended to initialize 
     return ad;
 }
 ```
-Note: You can use the following test id when you are testing. Test id won't generate revenue, please use official id when you release your App.
+Note: You can use the following test id when testing. Test id won't generate any revenue, please use official id when you release your App.
 
 |OS|Ad_type|  App_ID  |  Ad_Unit_ID|
 |--------|----------|--------|------------|
@@ -58,7 +74,7 @@ Note: You can use the following test id when you are testing. Test id won't gene
 
 ### 3.2 Show Ads
 
-When an ad is ready to display, you can show it using following method.
+When an ad is ready to display, you can play it using following method:
 ```objective-c
 // show an ad
 - (void)showAd {
@@ -71,19 +87,23 @@ When an ad is ready to display, you can show it using following method.
     [self.ad present];
 }
 ```
-### 3.3 Ad ready for display?
-You can judge the availability of an ad by this callback.  Then you’ll be able to manage your game’s settings according to the ad being ready or not.
+### 3.3 Determine whether an add has been loaded
+
+You can determine the availability of an ad via this callback. 
+> You are available to determine in-game settings via the following method.
 ```objective-c
 - (void)playableAdsDidLoad:(PlayableAds *)ads {
     NSLog(@"playable ads did load");
 }
 ```
-### 3.4 Obtain rewards
-To use ZPLAY Ads as a rewarded ad, it's very important to give the reward properly. To do so, please use the following callback code. Only rewarded video will call this method.
+### 3.4 Obtain reward
+You are available to realize this callback to reward users, only valid for rewarded video.
+> When using ZPLAY Ads to show rewarded video, you should reward those who has completed watching the video already via this callback.
+
 
 ```objective-c
 #pragma mark - PlayableAdsDelegate
-// Give reward, use this callback to judge if the reward is available.
+// Give reward, use this callback to judge whether the reward is available.
 - (void)playableAdsDidRewardUser:(PlayableAds *)ads {
     NSLog(@"playable ads did reward");
 }
@@ -159,12 +179,12 @@ To use ZPLAY Ads as a rewarded ad, it's very important to give the reward proper
 }
 @end
 ```
-## 5 Notices
-### 5.1 Receiving error 400
+## 5 Considerations
+### 5.1 Error 400
 
-Check the project, has the project set a Display Name.
-### 5.2 Black screen displayed when showing an ad
-There may be a http link in the ad. To remedy, please add following codes in info.plist
+Check whether the project has been set a Display Name.
+### 5.2 Black screen when showing an ad
+There may be a http link in the ad. You can add the following codes in info.plist:
 ```objective-c
 <key>NSAppTransportSecurity</key>
 <dict>
@@ -173,11 +193,11 @@ There may be a http link in the ad. To remedy, please add following codes in inf
 </dict>
 ```
 ### 5.3 Request Ads ASAP
-To ensure the ad resource can be successfully loaded, it’s encouraged to request ads as soon as possible.
+To ensure the ad can be loaded successfully, you are suggested to request ads ASAP.
 ### 5.4 Request Next Ad
-* When an ad is completed or a request fails, the SDK will try to request the next ad automatically. If this request fails, it will retry in 5 seconds.
+* The SDK will request the next ad automatically when an ad has been completed or request failure. If auto-loading fails, it will retry in 5 seconds.
 
-* If you want to request the next ad manually, you can set ```playableAd.autoload = NO``` to disable auto-request. And this is the default setting.
+* If you want to request the next ad manually, please set ```playableAd.autoload = NO``` to disable auto-loading. Auto-loading is the default setting.
 ### 5.5 Interstitial and Rewarded Video
-* From v2.0.3, you can choose to act as interstitial or rewarded videos when you apply the ad unit. If you act as interstitials, the ad can be terminated during playing and no rewards will be given. If you act as rewarded videos, the ad can't be terminated during playing, and a reward will be given after completed.
-* For interstitials, all the methods are just the same with rewarded videos, except for ```(void)playableAdsDidRewardUser:(PlayableAds *)ads```, which won't be triggered.
+* From v2.0.3, you can choose to act as interstitial or rewarded videos when applying for ad unit. If interstitial, the ad can be terminated during playing and no rewards will be given. If rewarded video, the ad can't be terminated during playing, and a reward will be given after playing.
+* Except```- (void)playableAdsDidRewardUser:(PlayableAds *)ads```, which will not be triggered, all call and callback methods of interstitial are the same as those of rewarded video. 

@@ -29,7 +29,7 @@ pod install
 ```
 ### 2.2 手动集成PlayableAds SDK
 #### 2.2.1 下载PlayableAds sdk 
-在[此处](http://wiki.zplay.cn/pages/viewpage.action?pageId=27331496&preview=%2F27331496%2F27985592%2FPlayableAds-v2.0.5.zip)可以下载到PlayableAds SDK，下载完成后解压.zip文件可得到PlayableAds.framework文件
+在[此处](./sdk-framework/PlayableAds-v2.0.5.zip)可以下载到PlayableAds SDK，下载完成后解压.zip文件可得到PlayableAds.framework文件
 #### 2.2.2 添加到工程
 将上一步得到的PlayableAds.framework添加到项目中 ![图片](./tutorialImg/manual-add-files.png)
 ![图片](./tutorialImg/manual-add-files2.png)

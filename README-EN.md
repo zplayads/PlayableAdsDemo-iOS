@@ -30,7 +30,7 @@ pod install
 ```
 ### 2.2 Manual integration
 #### 2.2.1 Download ZPLAY Ads SDK
-Download ZPLAY Ads SDK [HERE](http://wiki.zplay.cn/pages/viewpage.action?pageId=27331496&preview=%2F27331496%2F27985592%2FPlayableAds-v2.0.5.zip). When completed, please unzip .zip file to obtain PlayableAds.framework.
+Download ZPLAY Ads SDK [HERE](./sdk-framework/PlayableAds-v2.0.5.zip). When completed, please unzip .zip file to obtain PlayableAds.framework.
 #### 2.2.2 Add to project
 Add the PlayableAds.framework you obtained in 2.2.1 to project.![图片](./tutorialImg/manual-add-files.png)
 ![图片](./tutorialImg/manual-add-files2.png)

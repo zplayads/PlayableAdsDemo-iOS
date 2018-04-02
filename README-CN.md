@@ -1,14 +1,14 @@
 ## 1.概述 v2.0.5
 ### 1.1.面向读者
-本产品面向需要在Xcode工程中接入ZPLAYAds SDK的开发人员。
+本产品面向需要在Xcode工程中接入ZPLAY Ads SDK的开发人员。
 ### 1.2.开发环境
 - 操作系统：Mac OS X10.8.5版本及以上
 - 开发环境：Xcode7及以上版本
 - 部署目标：iOS8及以上
 ### 1.3.术语介绍
-**APPID**：应用ID，是您在ZPLAYAds平台创建媒体时获取的ID;
+**APPID**：应用ID，是您在ZPLAY Ads平台创建媒体时获取的ID;
 
-**adUnitID**：广告位ID，是您在ZPLAYAds告平台为您的应用创建的广告位置的ID。
+**adUnitID**：广告位ID，是您在ZPLAY Ads告平台为您的应用创建的广告位置的ID。
 ## 2.SDK接入
 ### 2.1 CocoaPods(推荐)
 ##### 2.1.1 安装CocoaPods/Install Cocoapods
@@ -19,24 +19,24 @@ sudo gem install cocoapods
 ```sh
 pod init
 ```
-##### 2.1.3 将Playable Ads SDK加入到Podfile文件
+##### 2.1.3 将ZPLAY Ads SDK加入到Podfile文件
 ```sh
 pod 'PlayableAds', '~>2.0.5'
 ```
-##### 2.1.4 安装Playable Ads SDK
+##### 2.1.4 安装ZPLAY Ads SDK
 ```sh
 pod install
 ```
-### 2.2 手动集成PlayableAds SDK
-#### 2.2.1 下载PlayableAds sdk 
+### 2.2 手动集成ZPLAY Ads SDK
+#### 2.2.1 下载ZPLAY Ads sdk 
 在[此处](http://wiki.zplay.cn/pages/viewpage.action?pageId=27331496&preview=%2F27331496%2F27985592%2FPlayableAds-v2.0.5.zip)可以下载到PlayableAds SDK，下载完成后解压.zip文件可得到PlayableAds.framework文件
 #### 2.2.2 添加到工程
 将上一步得到的PlayableAds.framework添加到项目中 ![图片](./tutorialImg/manual-add-files.png)
 ![图片](./tutorialImg/manual-add-files2.png)
-#### 2.2.3 添加PlayableAds的依赖文件
-PlayableAds依赖的framework有：UIKit, Foundation, WebKit, SystemConfiguration, MobileCoreServices, AdSupport, CoreLocation, CoreTelephony, StoreKit, Security。
+#### 2.2.3 添加ZPLAY Ads的依赖文件
+ZPLAY Ads依赖的framework有：UIKit, Foundation, WebKit, SystemConfiguration, MobileCoreServices, AdSupport, CoreLocation, CoreTelephony, StoreKit, Security。
 
-PlayableAds依赖的libraries有：xml2.
+ZPLAY Ads依赖的libraries有：xml2.
 
 导入后如图所示：![图片](./tutorialImg/manual-add-framework-libs.png)
 #### 2.2.4 其它设置
@@ -46,8 +46,8 @@ PlayableAds依赖的libraries有：xml2.
 ## 3.接入代码
 **3.1 初始化SDK**
 
-初始化ZPLAYAds广告，并显示视频。
-> 广告预加载需要几秒时间，建议您在应用启动后尽早初始化及加载ZPLAYAds广告。初始化SDK时需要将您在ZPLAYAds平台申请的APPID和adUnitID填入相应的位置，
+初始化ZPLAY Ads广告，并显示视频。
+> 广告预加载需要几秒时间，建议您在应用启动后尽早初始化及加载ZPLAY Ads广告。初始化SDK时需要将您在ZPLAY Ads平台申请的AppID和AdUnitID填入相应的位置，
 
 
 ```objective-c
@@ -65,7 +65,7 @@ ad.delegate = self;
 return ad;
 }
 ```
-注：您在测试中可使用如下id进行测试，测试id不会产生收益，应用上线时请使用您申请的正式id。
+注：您在测试中可使用如下ID进行测试，测试ID不会产生收益，应用上线时请使用您申请的正式ID。
 
 |操作系统|广告形式|  App_ID  |  Ad_Unit_ID|
 |--------|----------|--------|------------|
@@ -100,7 +100,7 @@ return ad;
 **3.4 获取奖励**
 
 视频奖励，您可以实现此回调给用户下发奖励，仅激励视频会有此回调。
-> 当您在激励视频广告位上使用ZPLAYAds时，最重要的是奖励看完广告的用户，要奖励用户请实现此回调。
+> 当您在激励视频广告位上使用ZPLAY Ads时，最重要的是奖励看完广告的用户，要奖励用户请实现此回调。
 
 ```objective-c
 #pragma mark - PlayableAdsDelegate

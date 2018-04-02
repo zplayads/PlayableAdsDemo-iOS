@@ -9,7 +9,7 @@ This guide is designed for the developers who are going to integrate ZPLAY Ads S
 
 **APPID**: ID for your Application, obtained when setting up the app within your account on ZPLAY Ads platform.
 
-**adUnitID**: ID for a specific ad placement within your App, as generated for your Apps within your account on ZPLAY Ads platform.  
+**AdUnitID**: ID for a specific ad placement within your App, as generated for your Apps within your account on ZPLAY Ads platform.  
 ## 2.SDK Integration
 ### 2.1 CocoaPods(recommended)
 #### 2.1.1 Install CocoaPods 
@@ -64,7 +64,7 @@ Initialize ZPLAY Ads, show ad.
     return ad;
 }
 ```
-Note: You can use the following test id when testing. Test id won't generate any revenue, please use official id when you release your App.
+Note: You can use the following test ID when testing. Test ID won't generate any revenue, please use official ID when you release your App.
 
 |OS|Ad_type|  App_ID  |  Ad_Unit_ID|
 |--------|----------|--------|------------|

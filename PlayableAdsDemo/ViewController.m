@@ -11,8 +11,11 @@
 @import PlayableAds;
 
 @interface ViewController () <PlayableAdsDelegate>
-
 @property (nonatomic) PlayableAds *ad;
+
+@property (weak, nonatomic) IBOutlet UIButton *requestAd;
+@property (weak, nonatomic) IBOutlet UIButton *presentAd;
+
 @property (weak, nonatomic) IBOutlet UILabel *logLabel;
 
 @end
@@ -21,68 +24,87 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.ad = [self createAndLoadPlayableAds];
-    [_logLabel sizeToFit];
+    
+    // init Playable Advertising.
+    _ad = [[PlayableAds alloc] initWithAdUnitID:@"BAE5DAAC-04A2-2591-D5B0-38FA846E45E7" appID:@"A650AB0D-7BFC-2A81-3066-D3170947C3DA"];
+    _ad.delegate = self;
+    [self requestAdvertising:nil];
 }
 
+-(void)viewDidDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)requestAdvertising:(UIButton *)sender {
     [self addLog:@"request advertising."];
-    [self.ad loadAd];
+    [_ad loadAd];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [sender setEnabled:NO];
 }
 
 - (IBAction)presentAdvertising:(UIButton *)sender {
-    [self showAd];
+    if (_ad.isReady) {
+        [self addLog:@"show advertising"];
+        // show the ad
+        [_ad present];
+    }else {
+        // ad is not ready, do nothing
+        [self addLog:@"advertising has not ready."];
+    }
+}
+
+- (IBAction)autoloadAd:(UISwitch *)sender {
+    _ad.autoLoad = sender.isOn;
+    if (sender.isOn){
+        [_ad loadAd];
+        [_requestAd setEnabled:NO];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    } else {
+        [_requestAd setEnabled:YES];
+    }
 }
 
 - (void) addLog: (NSString*) log {
-    NSString *newLineLog = [log stringByAppendingString:@"\n"];
-    _logLabel.text = [newLineLog stringByAppendingString: _logLabel.text];
-}
-
-// 创建广告并加载
-- (PlayableAds *)createAndLoadPlayableAds {
-    PlayableAds *ad = [[PlayableAds alloc] initWithAdUnitID:@"iOSDemoAdUnit" appID:@"iOSDemoApp"];
-    ad.delegate = self;
-    return ad;
-}
-
-// 展示广告
-- (void)showAd {
-    // ad is not ready, do nothing
-    if (!self.ad.ready) {
-        [self addLog:@"advertising has not ready."];
-        return;
-    }
+    NSLog(@"PA log: %@", log);
     
-    [self addLog:@"show advertising"];
-    // show the ad
-    [self.ad present];
+    NSString *newLineLog = [_logLabel.text stringByAppendingString:@"\n"];
+    _logLabel.text = [newLineLog stringByAppendingString: log];
+}
+
+- (IBAction)clearLog:(id)sender {
+    _logLabel.text = @"info: long press to clear.";
 }
 
 #pragma mark - PlayableAdsDelegate
 - (void)playableAdsDidRewardUser:(PlayableAds *)ads {
-    [self addLog:@"Advertising successfully presented"];
+    NSLog(@"playableAdsDidRewardUser");
+    [self addLog:@"playableAdsDidRewardUser"];
 }
 
 /// Tells the delegate that succeeded to load ad.
 - (void)playableAdsDidLoad:(PlayableAds *)ads {
+    NSLog(@"playableAdsDidLoad");
+    [self addLog:@"playableAdsDidLoad"];
+    if(!_ad.autoLoad){
+        [_requestAd setEnabled:YES];
+    }else {
+        [_requestAd setEnabled:NO];
+    }
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [self addLog:@"Advertising is ready to play."];
 }
 
 /// Tells the delegate that failed to load ad.
 - (void)playableAds:(PlayableAds *)ads didFailToLoadWithError:(NSError *)error {
+    NSLog(@"playableAds error:\n%@", error);
+    if(!_ad.autoLoad){
+        [_requestAd setEnabled:YES];
+    }
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     [self addLog: [@"\nThere was a problem loading advertising:" stringByAppendingString:[error localizedDescription] ]];
-    NSLog(@"playableAds error:\n%@", error);
 }
 
 @end

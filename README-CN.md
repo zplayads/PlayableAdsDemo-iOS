@@ -1,4 +1,4 @@
-## 1.概述 v2.0.5
+## 1.概述 v2.0.6
 ### 1.1.面向读者
 本产品面向需要在Xcode工程中接入ZPLAY Ads SDK的开发人员。
 ### 1.2.开发环境
@@ -21,7 +21,7 @@ pod init
 ```
 ##### 2.1.3 将ZPLAY Ads SDK加入到Podfile文件
 ```sh
-pod 'PlayableAds', '~>2.0.5'
+pod 'PlayableAds', '~>2.0.6'
 ```
 ##### 2.1.4 安装ZPLAY Ads SDK
 ```sh
@@ -67,10 +67,10 @@ return ad;
 ```
 注：您在测试中可使用如下ID进行测试，测试ID不会产生收益，应用上线时请使用您申请的正式ID。
 
-|操作系统|广告形式|  App_ID  |  Ad_Unit_ID|
-|--------|----------|--------|------------|
-|iOS|激励视频|A650AB0D-7BFC-2A81-3066-D3170947C3DA|BAE5DAAC-04A2-2591-D5B0-38FA846E45E7|
-|iOS|插屏|A650AB0D-7BFC-2A81-3066-D3170947C3DA|0868EBC0-7768-40CA-4226-F9924221C8EB|
+| 操作系统 | 广告形式 | App_ID                               | Ad_Unit_ID                           |
+| ---- | ---- | ------------------------------------ | ------------------------------------ |
+| iOS  | 激励视频 | A650AB0D-7BFC-2A81-3066-D3170947C3DA | BAE5DAAC-04A2-2591-D5B0-38FA846E45E7 |
+| iOS  | 插屏   | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 0868EBC0-7768-40CA-4226-F9924221C8EB |
 
 **3.2 展示广告**
 
@@ -178,6 +178,32 @@ return ad;
 - (void)playableAds:(PlayableAds *)ads didFailToLoadWithError:(NSError *)error {
     NSLog(@"There was a problem loading advertising: %@", error);
 }
+
+/// Tells the delegate that user starts playing the ad.
+- (void)playableAdsDidStartPlaying:(PlayableAds *)ads{
+   NSLog(@"Advertising start playing");
+}
+
+/// Tells the delegate that the ad is being fully played.
+- (void)playableAdsDidEndPlaying:(PlayableAds *)ads{
+  NSLog(@"Advertising did end playing");
+}
+
+/// Tells the delegate that the landing page did present on the screen.
+- (void)playableAdsDidPresentLandingPage:(PlayableAds *)ads{
+  NSLog(@"Advertising start playing");
+}
+
+/// Tells the delegate that the ad did animate off the screen.
+- (void)playableAdsDidDismissScreen:(PlayableAds *)ads{
+  NSLog(@"Advertising did dismiss screen");
+}
+
+/// Tells the delegate that the ad is clicked
+- (void)playableAdsDidClick:(PlayableAds *)ads{
+  NSLog(@"Advertising did clicked");
+}
+
 @end
 ```
 
@@ -207,4 +233,4 @@ return ad;
 ### 5.4 插屏广告与激励视频广告
 
 * 从2.0.3版本开始，您在申请广告位时可选择插屏广告还是激励视频广告，若广告位是插屏，广告开始后可中途关闭，且不会下发奖励。若广告位是激励视频，广告不可中途关闭，播放完成会给用户下发奖励。
-*  可玩插屏广告除关闭后不会触发```- (void)playableAdsDidRewardUser:(PlayableAds *)ads```方法外，其它方法调用与回调与一致。
+* 可玩插屏广告除关闭后不会触发```- (void)playableAdsDidRewardUser:(PlayableAds *)ads```方法外，其它方法调用与回调与一致。

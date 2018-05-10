@@ -1,12 +1,12 @@
 PODS:
-  - PlayableAds (2.0.4)
+  - PlayableAds (2.0.6)
 
 DEPENDENCIES:
-  - PlayableAds (~> 2.0.4)
+  - PlayableAds (~> 2.0.6)
 
 SPEC CHECKSUMS:
-  PlayableAds: a3c3deb1d80f961974adc2c0b91723260068b6ac
+  PlayableAds: ce69e4b8402dcc96f302082908156ee8d57d59fa
 
-PODFILE CHECKSUM: 9f935ced24514b8335f87f7d64581d106ca1621e
+PODFILE CHECKSUM: 6c8fc8b44c31f2d74c3ef93a434602babbe85224
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.2.1

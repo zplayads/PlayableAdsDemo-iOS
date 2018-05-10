@@ -107,4 +107,23 @@
     [self addLog: [@"\nThere was a problem loading advertising:" stringByAppendingString:[error localizedDescription] ]];
 }
 
+- (void)playableAdsDidEndPlaying:(PlayableAds *)ads{
+     [self addLog:@"playableAdsDidEndPlaying"];
+}
+- (void)playableAdsDidStartPlaying:(PlayableAds *)ads{
+    [self addLog:@"playableAdsDidStartPlaying"];
+}
+
+- (void)playableAdsDidPresentLandingPage:(PlayableAds *)ads{
+    [self addLog:@"playableAdsDidPresentLandingPage"];
+}
+
+- (void)playableAdsDidClick:(PlayableAds *)ads{
+    [self addLog:@"playableAdsDidClick"];
+}
+
+- (void)playableAdsDidDismissScreen:(PlayableAds *)ads{
+    [self addLog:@"playableAdsDidDismissScreen"];
+}
+
 @end

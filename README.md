@@ -14,7 +14,7 @@
 * Fix black screen issue
 * Fix in-AppStore issue in iOS11.0-11.2
 * Modify PlayableAdsDelegate, reduce some unnecessary interface
-### [2.0.5 Click here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.5)
+### [2.0.5 (Click here to download)](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.5)
 * 优化内存占用
 * Optimize memory usage
 

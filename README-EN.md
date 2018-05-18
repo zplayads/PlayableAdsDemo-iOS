@@ -1,4 +1,4 @@
-## 1. Overview V2.0.5
+## 1. Overview V2.0.6
 ### 1.1 Introduction
 This guide is designed for the developers who are going to integrate ZPLAY Ads SDK into their Xcode project.
 ### 1.2 Develop Environment
@@ -22,7 +22,7 @@ pod init
 ```
 #### 2.1.3 Add ZPLAY Ads SDK into Podfile
 ```sh
-pod 'PlayableAds', '~>2.0.5'
+pod 'PlayableAds', '~>2.0.6'
 ```
 ##### 2.1.4 Install ZPLAY Ads SDK
 ```sh
@@ -66,10 +66,10 @@ Initialize ZPLAY Ads, show ad.
 ```
 Note: You can use the following test ID when testing. Test ID won't generate any revenue, please use official ID when you release your App.
 
-|OS|Ad_type|  App_ID  |  Ad_Unit_ID|
-|--------|----------|--------|------------|
-|iOS|Rewarded video|A650AB0D-7BFC-2A81-3066-D3170947C3DA|BAE5DAAC-04A2-2591-D5B0-38FA846E45E7|
-|iOS|Intertitial|A650AB0D-7BFC-2A81-3066-D3170947C3DA|0868EBC0-7768-40CA-4226-F9924221C8EB|
+| OS   | Ad_type        | App_ID                               | Ad_Unit_ID                           |
+| ---- | -------------- | ------------------------------------ | ------------------------------------ |
+| iOS  | Rewarded video | A650AB0D-7BFC-2A81-3066-D3170947C3DA | BAE5DAAC-04A2-2591-D5B0-38FA846E45E7 |
+| iOS  | Intertitial    | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 0868EBC0-7768-40CA-4226-F9924221C8EB |
 
 ### 3.2 Show Ads
 
@@ -175,6 +175,31 @@ You are available to realize this callback to reward users, only valid for rewar
 /// Tells the delegate that failed to load ad.
 - (void)playableAds:(PlayableAds *)ads didFailToLoadWithError:(NSError *)error {
     NSLog(@"There was a problem loading advertising: %@", error);
+}
+
+/// Tells the delegate that user starts playing the ad.
+- (void)playableAdsDidStartPlaying:(PlayableAds *)ads{
+   NSLog(@"Advertising start playing");
+}
+
+/// Tells the delegate that the ad is being fully played.
+- (void)playableAdsDidEndPlaying:(PlayableAds *)ads{
+  NSLog(@"Advertising did end playing");
+}
+
+/// Tells the delegate that the landing page did present on the screen.
+- (void)playableAdsDidPresentLandingPage:(PlayableAds *)ads{
+  NSLog(@"Advertising start playing");
+}
+
+/// Tells the delegate that the ad did animate off the screen.
+- (void)playableAdsDidDismissScreen:(PlayableAds *)ads{
+  NSLog(@"Advertising did dismiss screen");
+}
+
+/// Tells the delegate that the ad is clicked
+- (void)playableAdsDidClick:(PlayableAds *)ads{
+  NSLog(@"Advertising did clicked");
 }
 @end
 ```

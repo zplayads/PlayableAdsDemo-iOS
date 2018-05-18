@@ -9,6 +9,8 @@
 * 修复黑屏
 * 修复iOS11.0-11.2系统内置AppStore无法问题
 * 修改PlayableAdsDelegate ，减少不必要的api接口
+### 2.0.5
+* 优化内存占用
 ### 2.0.4
 * 修复iOS11打开内置appstore白屏问题
 2.0.3

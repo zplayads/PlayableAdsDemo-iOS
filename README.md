@@ -2,7 +2,7 @@
 
 # [SDK Integration](https://github.com/zplayads/PlayableAdsDemo-iOS/blob/master/README-EN.md)
 
-## ZPLAY Ads SDK更新日志
+## ZPLAY Ads SDK历史版本
 ### [2.0.6 (Click here to download)](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.5)
 * 添加缺少的framework依赖包
 * 物料支持静音播放

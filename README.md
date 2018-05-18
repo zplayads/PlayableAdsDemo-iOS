@@ -16,17 +16,10 @@
 **2.0.4** [点击获取](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.4)
 * 修复iOS11打开内置appstore白屏问题
 
-**2.0.3** [点击获取](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.3)
-* 兼容iOS9.0系统
-* 修复插屏显示问题
-* 修复落地页白屏
-* 优化删除缓存操作
 
 **2.0.2** [点击获取](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.2)
 * 修复弱网络下缓存物料失败后，广告无法正常播放问题
 
-**2.0.1** [点击获取](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.1)
-* 修改加载广告方式，改为默认自动加载广告
 
 **2.0.0** [点击获取](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.0)
 * 添加插屏广告

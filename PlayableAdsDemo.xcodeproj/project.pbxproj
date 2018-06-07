@@ -146,7 +146,6 @@
 				C758B4D31FAFFBC8009CE8E9 /* Sources */,
 				C758B4D41FAFFBC8009CE8E9 /* Frameworks */,
 				C758B4D51FAFFBC8009CE8E9 /* Resources */,
-				9C4D8B4DF93661F48C5BF0FE /* [CP] Embed Pods Frameworks */,
 				468C29BAB66323DC9AA23A43 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -166,8 +165,6 @@
 				C758B4EB1FAFFBC8009CE8E9 /* Sources */,
 				C758B4EC1FAFFBC8009CE8E9 /* Frameworks */,
 				C758B4ED1FAFFBC8009CE8E9 /* Resources */,
-				0FFC628AEB84963767287CE1 /* [CP] Embed Pods Frameworks */,
-				DB031C3A1B148781AB7F8BAC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,49 +236,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0FFC628AEB84963767287CE1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlayableAdsDemoTests/Pods-PlayableAdsDemoTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		468C29BAB66323DC9AA23A43 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PlayableAdsDemo/Pods-PlayableAdsDemo-resources.sh",
+				"${PODS_ROOT}/PlayableAds/Resources/ZplayMuteListener.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZplayMuteListener.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlayableAdsDemo/Pods-PlayableAdsDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9C4D8B4DF93661F48C5BF0FE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlayableAdsDemo/Pods-PlayableAdsDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A368ED822D5820E4C2F685CA /* [CP] Check Pods Manifest.lock */ = {
@@ -318,21 +288,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DB031C3A1B148781AB7F8BAC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlayableAdsDemoTests/Pods-PlayableAdsDemoTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -497,9 +452,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5QP2NLJB42;
+				DEVELOPMENT_TEAM = VG25A6M88T;
 				INFOPLIST_FILE = PlayableAdsDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zplay.PlayableAdsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -516,9 +471,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5QP2NLJB42;
+				DEVELOPMENT_TEAM = VG25A6M88T;
 				INFOPLIST_FILE = PlayableAdsDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zplay.PlayableAdsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

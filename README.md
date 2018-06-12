@@ -3,7 +3,7 @@
 # [SDK Integration](https://github.com/zplayads/PlayableAdsDemo-iOS/blob/master/README-EN.md)
 
 ## ZPLAY Ads SDK历史版本
-**2.0.7**
+**2.0.7** [click here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.7)
 
 - 优化广告加载逻辑
 - 优化SDK内存占用
@@ -16,7 +16,7 @@
 
 
 
-**2.0.6** [lick here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.6)
+**2.0.6** [click here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.6)
 * 添加缺少的framework依赖包
 * 物料支持静音播放
 * 修复黑屏

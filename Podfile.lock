@@ -1,16 +1,16 @@
 PODS:
-  - PlayableAds (2.0.7)
+  - PlayableAds (2.0.8)
 
 DEPENDENCIES:
-  - PlayableAds (~> 2.0.7)
+  - PlayableAds (~> 2.0.8)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - PlayableAds
 
 SPEC CHECKSUMS:
-  PlayableAds: c0476d0f911842994ec5c45bff5c7c53c32282f8
+  PlayableAds: 9457de069081234e3e473b574ac3561ad380a543
 
-PODFILE CHECKSUM: 0c07b3c483b34c2675189f557ec0242303dc6f99
+PODFILE CHECKSUM: e05be6a1589f40ba7d8ade66924963cffcac3501
 
 COCOAPODS: 1.5.3

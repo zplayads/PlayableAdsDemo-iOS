@@ -3,6 +3,11 @@
 # [SDK Integration](https://github.com/zplayads/PlayableAdsDemo-iOS/blob/master/README-EN.md)
 
 ## ZPLAY Ads SDK历史版本
+
+**2.0.8** [click here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.8)
+* 支持聚合平台接入时填写channel_id参数，
+* Support filling in channel_id parameter when mediation integrate ZPLAYAds
+
 **2.0.7** [click here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.7)
 
 - 优化广告加载逻辑
@@ -13,8 +18,6 @@
 - Optimize memory usage
 - Optimize ad impression experience
 - Support ad skipping in rewarded video
-
-
 
 **2.0.6** [click here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.6)
 * 添加缺少的framework依赖包

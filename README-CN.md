@@ -1,4 +1,4 @@
-## 1.概述 v2.0.7
+## 1.概述
 ### 1.1.面向读者
 本产品面向需要在Xcode工程中接入ZPLAY Ads SDK的开发人员。
 ### 1.2.开发环境
@@ -21,7 +21,7 @@ pod init
 ```
 ##### 2.1.3 将ZPLAY Ads SDK加入到Podfile文件
 ```sh
-pod 'PlayableAds', '~>2.0.7'
+pod 'PlayableAds'
 ```
 ##### 2.1.4 安装ZPLAY Ads SDK
 ```sh

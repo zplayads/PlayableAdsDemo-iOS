@@ -4,6 +4,12 @@
 
 ## ZPLAY Ads SDK历史版本
 
+**2.0.9** [click here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.9)
+* 更新激励视频广告位关闭时弹窗样式
+* 修复已知问题
+* Optimize pop-up style when close ad in rewarded video ad type
+* Fix some known bugs
+
 **2.0.8** [click here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.0.8)
 * 支持聚合平台接入时填写channel_id参数
 * Support filling in channel_id parameter when mediation integrate ZPLAYAds

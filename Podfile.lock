@@ -1,5 +1,5 @@
 PODS:
-  - PlayableAds (2.0.9)
+  - PlayableAds (2.1.0)
 
 DEPENDENCIES:
   - PlayableAds
@@ -9,7 +9,7 @@ SPEC REPOS:
     - PlayableAds
 
 SPEC CHECKSUMS:
-  PlayableAds: 34bd08a7ebbe0dba1556fff8760b278bcb63fbe8
+  PlayableAds: 918ce69bfa751626d68ced8ecd58b8f6e931a986
 
 PODFILE CHECKSUM: 2ac2636f469d83b14147aafe7db2954ccbd5308a
 

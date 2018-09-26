@@ -1,4 +1,7 @@
+[TOC]
+
 ## 1.概述
+
 ### 1.1.面向读者
 本产品面向需要在Xcode工程中接入ZPLAY Ads SDK的开发人员。
 ### 1.2.开发环境
@@ -11,19 +14,23 @@
 **adUnitID**：广告位ID，是您在ZPLAY Ads告平台为您的应用创建的广告位置的ID。
 ## 2.SDK接入
 ### 2.1 CocoaPods(推荐)
-##### 2.1.1 安装CocoaPods/Install Cocoapods
+#### 2.1.1 安装CocoaPods/Install Cocoapods
+
 ```sh
 sudo gem install cocoapods
 ```
-##### 2.1.2 从终端切换至iOS项目根目录下，创建Podfile文件
+#### 2.1.2 从终端切换至iOS项目根目录下，创建Podfile文件
+
 ```sh
 pod init
 ```
-##### 2.1.3 将ZPLAY Ads SDK加入到Podfile文件
+#### 2.1.3 将ZPLAY Ads SDK加入到Podfile文件
+
 ```sh
 pod 'PlayableAds'
 ```
-##### 2.1.4 安装ZPLAY Ads SDK
+#### 2.1.4 安装ZPLAY Ads SDK
+
 ```sh
 pod install
 ```
@@ -284,16 +291,16 @@ PANativeAdDelegate提供拉取广告状态和点击的回调，供开发者使�
 <true/>
 </dict>
 ```
-### 5.3 尽早请求广告
+### 4.3 尽早请求广告
 广告请求需要时间，为确保广告资源能够成功加载，建议尽快请求广告。
 
-### 5.4 请求下一条广告
+### 4.4 请求下一条广告
 
 * 广告展示完成或请求失败时会自动加载下一条广告，如果自动加载失败会在5s后重试。
 
 * 若您需要手动加载下一条广告，可将通过```playableAd.autoload = NO```来设置SDK不自动加载下一条广告。默认为自动加载。
 
-### 5.4 插屏广告与激励视频广告
+### 4.5 插屏广告与激励视频广告
 
 * 从2.0.3版本开始，您在申请广告位时可选择插屏广告还是激励视频广告，若广告位是插屏，广告开始后可中途关闭，且不会下发奖励。若广告位是激励视频，广告不可中途关闭，播放完成会给用户下发奖励。
 * 当您的广告位是插屏广告形式时，不会触发`- (void)playableAdsDidRewardUser:(PlayableAds *)ads`方法，其余方法均与激励视频广告位一致。

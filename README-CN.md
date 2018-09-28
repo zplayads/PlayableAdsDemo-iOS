@@ -166,11 +166,11 @@ return ad;
 
 ### 3.2 原生广告(模板方式)接入代码
 
->原生模板广告是ZPLAY Ads推出的一种自动化展现的原生广告。原生模板广告简化了原生广告的接入流程，使得接入原生广告更加便捷。
+>原生模板广告是ZPLAY Ads推出的一种自动渲染广告样式的原生广告。此种方式接入简化了原生广告的接入流程，您只需将广告展示出来，无需处理广告渲染相关事情，使得接入原生广告更加便捷。
 
-#### 3.2.1 初始化 nativeExpressAd
+#### 3.2.1 初始化nativeExpressAd
 
-1.1.在开发者自己 ViewController 中,导入头文件，例如：
+a. 在开发者自己ViewController 中,导入头文件，例如：
 
 ```objective-c
 @interface PANativeExpressAdViewController () <PANativeExpressAdDelegate>
@@ -180,17 +180,17 @@ return ad;
 @end
 ```
 
-1.2.初始化 nativeExpressAd，获取广告，并设置回调
+b. 初始化nativeExpressAd，获取广告，并设置回调
 
 ```objective-c
 CGFloat width = [UIScreen mainScreen].bounds.size.width;
-// adSize(即广告位尺寸)由您自行设置，sdk会返回一个适配过 adSize 的广告view
+// adSize(即广告位尺寸)由您自行设置，SDK会返回一个适配过 adSize 的广告view
 self.nativeExpressAd =
         [[PANativeExpressAd alloc] initWithAdUnitID:@"Your Ad-Unit-ID" appID:@"Your App-ID" adSize:CGSizeMake(width, 300)];
 self.nativeExpressAd.delegate = self;
 ```
 
-#### 3.2.2 加载一条原生模版广告
+#### 3.2.2 加载原生广告
 
 ```objective-c
 [self.nativeExpressAd loadAd];
@@ -198,13 +198,13 @@ self.nativeExpressAd.delegate = self;
 
 #### 3.2.3 渲染曝光
 
-在 nativeExpressAd 的回调中，检测广告回调状态。成功之后，会返回一个 PANativeExpressAdView 类型的 view 对象，开发者可以```addSubview：```到展示的位置
+您需要在nativeExpressAd的回调中检测回调状态，若状态为成功，会返回一个 PANativeExpressAdView 类型的view对象，您可以调用```addSubview：```方法，将广告展示到需要的位置。
 
-- 渲染完毕曝光给最终用户时需调用```reportImpressionNativeExpressAd```方法告知ZPLAY Ads已经渲染完毕并曝光。
+> 当您展示广告时，需调用```reportImpressionNativeExpressAd```方法来通知ZPLAY Ads广告被展示。
 
-#### 3.2.4 PANativeExpressAdDelegate回调
+#### 3.2.4 广告拉取状态及点击回调
 
-PANativeExpressAdDelegate提供拉取广告状态和点击的回调，供开发者使用
+PANativeExpressAdDelegate提供广告拉取状态和点击的回调，您可通过此回调判断广告是否拉取成功及广告是否被点击。
 
 ```objective-c
 /// 原生模板广告加载成功，返回PANativeExpressAdView对象
@@ -215,7 +215,7 @@ PANativeExpressAdDelegate提供拉取广告状态和点击的回调，供开发�
 - (void)playableNativeExpressAdDidFailWithError:(NSError *)error{
   
 }
-/// 原生模板广告被点击的回调
+/// 原生模板广告被点击
 - (void)playableNativeExpressAdDidClick:(PANativeExpressAdView *)nativeExpressAd{
   
 }
@@ -223,11 +223,11 @@ PANativeExpressAdDelegate提供拉取广告状态和点击的回调，供开发�
 
 ### 3.3 原生广告(自渲染)接入代码
 
->原生自渲染广告是ZPLAY Ads推出的一种高度灵活的原生广告。原生自渲染广告可以更契合你的App
+>原生自渲染广告是ZPLAY Ads推出的一种高度灵活的原生广告。您可根据自己的需求自行展示广告，使广告展示更契合您的应用。
 
 #### 3.3.1 初始化nativeAd
 
-1.1.在开发者自己 ViewController 中,导入头文件，例如：
+a. 在开发者自己ViewController中，导入头文件，例如：
 
 ```objective-c
 @interface PAShowNativeAdViewController () <PANativeAdDelegate>
@@ -237,14 +237,14 @@ PANativeExpressAdDelegate提供拉取广告状态和点击的回调，供开发�
 @end
 ```
 
-1.2.初始化 nativeAd，获取广告，并设置回调
+b. 初始化nativeAd，获取广告，并设置回调
 
 ```objective-c
 self.nativeAd = [[PANativeAd alloc] initWithAdUnitID:@"Your Ad-Unit-ID" appID:@"Your App-ID"];
 self.nativeAd.delegate = self;
 ```
 
-#### 3.3.2 加载一条原生自渲染广告
+#### 3.3.2 加载原生广告
 
 ```objective-c
 [self.nativeAd loadAd];
@@ -252,16 +252,15 @@ self.nativeAd.delegate = self;
 
 #### 3.3.3 渲染曝光
 
-4.在 nativeAd 的回调中，检测广告回调状态。成功之后，会返回一个PANativeAdModel的广告对象，开发者在合适的时机渲染广告界面并进行展示
+在nativeAd的回调中，检测广告回调状态，成功之后，会返回一个PANativeAdModel的广告对象，开发者在合适的时机渲染广告界面并进行展示。
 
-注意：
-
+> 注意：
 - 渲染完毕曝光给最终用户时需调用```reportImpression:view:```方法告知ZPLAY Ads已经渲染完毕并曝光。
 - 将PANativeAd与您将用于显示原生广告的UIView相关联，调用方法```registerViewForInteraction: nativeAd:``` 。请确保关联view的    ```view.userInteractionEnabled = YES;```
 
-#### 3.3.4 PANativeAdDelegate回调
+#### 3.3.4 广告拉取状态及点击回调
 
-PANativeAdDelegate提供拉取广告状态和点击的回调，供开发者使用
+PANativeAdDelegate提供广告拉取状态和点击的回调，您可通过此回调判断广告是否拉取成功及广告是否被点击。
 
 ```objective-c
 /// 原生自渲染广告加载成功，返回PANativeAdModel对象

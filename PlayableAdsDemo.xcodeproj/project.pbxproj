@@ -129,6 +129,7 @@
 				6DF22214215F81D100FEFDA2 /* PAPlayableAdsViewController.h */,
 				6DF22215215F81D200FEFDA2 /* PAPlayableAdsViewController.m */,
 				6DF2221C215F81D200FEFDA2 /* PASettingsViewController.m */,
+				6DF22236215F81E700FEFDA2 /* PASettingsViewController.h */,
 				6DF22213215F81D100FEFDA2 /* PATestModelCell.h */,
 				6DF2221A215F81D200FEFDA2 /* PATestModelCell.m */,
 				6DF221E4215F818000FEFDA2 /* Statistics */,
@@ -160,7 +161,6 @@
 				6DF22231215F81E700FEFDA2 /* PANativeExpressAdCell.xib */,
 				6DF22239215F81E800FEFDA2 /* PANativeExpressAdViewController.h */,
 				6DF22234215F81E700FEFDA2 /* PANativeExpressAdViewController.m */,
-				6DF22236215F81E700FEFDA2 /* PASettingsViewController.h */,
 				6DF22238215F81E800FEFDA2 /* PAShowNativeAdViewController.h */,
 				6DF22230215F81E700FEFDA2 /* PAShowNativeAdViewController.m */,
 			);

@@ -550,7 +550,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="iOSDemoApp " borderStyle="roundedRect" placeholder="AppID" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4If-gS-bNE">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="A650AB0D-7BFC-2A81-3066-D3170947C3DA " borderStyle="roundedRect" placeholder="AppID" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4If-gS-bNE">
                                 <rect key="frame" x="12" y="84" width="296" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -566,7 +566,7 @@
                                     <action selector="requestAdAction:" destination="Hty-ls-qNd" eventType="touchUpInside" id="9mD-PV-VoZ"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="iOSDemoAdUnit" borderStyle="roundedRect" placeholder="AdUnitID" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MoL-wa-S8V">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BAE5DAAC-04A2-2591-D5B0-38FA846E45E7" borderStyle="roundedRect" placeholder="AdUnitID" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MoL-wa-S8V">
                                 <rect key="frame" x="12" y="134" width="296" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -635,6 +635,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Z3I-0V-N8c"/>
-        <segue reference="rMe-h9-ria"/>
+        <segue reference="D8y-Ha-eFL"/>
     </inferredMetricsTieBreakers>
 </document>

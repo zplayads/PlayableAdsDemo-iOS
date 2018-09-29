@@ -9,44 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Statistics-->
-        <scene sceneID="RE1-xd-VHe">
-            <objects>
-                <viewController id="kId-bf-sKp" customClass="PAStatisticsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="M3S-QN-hxe"/>
-                        <viewControllerLayoutGuide type="bottom" id="hhT-Gm-qPR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="R8H-6H-mEI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w41-f6-qQC">
-                                <rect key="frame" x="0.0" y="70" width="320" height="410"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="kId-bf-sKp" id="MmG-lN-2pr"/>
-                                    <outlet property="delegate" destination="kId-bf-sKp" id="zVk-sA-4ai"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="hhT-Gm-qPR" firstAttribute="top" secondItem="w41-f6-qQC" secondAttribute="bottom" id="29C-mj-zGN"/>
-                            <constraint firstAttribute="trailing" secondItem="w41-f6-qQC" secondAttribute="trailing" id="WaJ-aH-H2v"/>
-                            <constraint firstItem="w41-f6-qQC" firstAttribute="leading" secondItem="R8H-6H-mEI" secondAttribute="leading" id="o83-fJ-kmf"/>
-                            <constraint firstItem="w41-f6-qQC" firstAttribute="top" secondItem="M3S-QN-hxe" secondAttribute="bottom" id="qEW-fs-eup"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Statistics" id="ahX-5j-RfK"/>
-                    <connections>
-                        <outlet property="listTableView" destination="w41-f6-qQC" id="Rmg-wY-GhE"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fre-SW-k6p" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="544" y="945"/>
-        </scene>
         <!--Self Rendering-->
         <scene sceneID="Xd0-td-ZOZ">
             <objects>
@@ -393,32 +355,6 @@
                                             <segue destination="lh8-XO-PXb" kind="push" id="q2O-vM-7ef"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayableCellID" id="Kv5-Ex-BHd">
-                                        <rect key="frame" x="0.0" y="211" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kv5-Ex-BHd" id="UUw-Nj-y9s">
-                                            <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Statistics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIg-og-OQb">
-                                                    <rect key="frame" x="16" y="11.5" width="63.5" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="dph-1G-6UZ"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="NIg-og-OQb" firstAttribute="centerY" secondItem="UUw-Nj-y9s" secondAttribute="centerY" id="5Ep-Nw-fQD"/>
-                                                <constraint firstItem="NIg-og-OQb" firstAttribute="leading" secondItem="UUw-Nj-y9s" secondAttribute="leadingMargin" id="OsA-BX-GgQ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="kId-bf-sKp" kind="push" id="DVP-LO-4hc"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -699,6 +635,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Z3I-0V-N8c"/>
-        <segue reference="D8y-Ha-eFL"/>
+        <segue reference="rMe-h9-ria"/>
     </inferredMetricsTieBreakers>
 </document>

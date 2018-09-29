@@ -7,7 +7,8 @@ target 'PlayableAdsDemo' do
 
   # Pods for PlayableAdsDemo
   pod 'PlayableAds'
-
+  pod 'Masonry'
+   
   target 'PlayableAdsDemoTests' do
     inherit! :search_paths
     # Pods for testing

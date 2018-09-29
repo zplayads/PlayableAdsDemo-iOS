@@ -9,20 +9,13 @@
 #import "PAPlayableAdsViewController.h"
 #import "PADemoUtils.h"
 #import <PlayableAds/PlayableAds.h>
-#import <PlayableAdsPreviewer/PlayableAdsPreviewer.h>
-#import <QRCodeReaderViewController/QRCodeReaderViewController.h>
 
-@interface PAPlayableAdsViewController () <UITextFieldDelegate, PlayableAdsDelegate, QRCodeReaderDelegate>
+@interface PAPlayableAdsViewController () <UITextFieldDelegate, PlayableAdsDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *previewTextField;
-@property (weak, nonatomic) IBOutlet UITextField *landingPageField;
 @property (weak, nonatomic) IBOutlet UITextField *appIdTextField;
 @property (weak, nonatomic) IBOutlet UITextField *adUnitTextField;
 @property (weak, nonatomic) IBOutlet UITextView *logTextView;
-@property (weak, nonatomic) IBOutlet UIButton *previewBtn;
-@property (weak, nonatomic) IBOutlet UIButton *landingPageBtn;
 
-@property (nonatomic) PlayableAdsPreviewer *previewPlayableAds;
 @property (nonatomic) PlayableAds *playableAd;
 
 @end
@@ -43,8 +36,6 @@
 
 #pragma mark : set delegate
 - (void)setDelegate {
-    self.previewTextField.delegate = self;
-    self.landingPageField.delegate = self;
     self.appIdTextField.delegate = self;
     self.adUnitTextField.delegate = self;
 }
@@ -63,130 +54,8 @@
     });
 }
 
-- (void)previewAdWith:(NSString *)adItem {
-
-    NSString *previewContent = [[PADemoUtils shared] removeSpaceAndNewline:adItem];
-    if (previewContent.length == 0) {
-        [self addLog:@"preview html url or ad_id is nil"];
-        return;
-    }
-
-    self.previewBtn.enabled = NO;
-    self.landingPageBtn.enabled = NO;
-
-    NSURL *validateUrl = [NSURL URLWithString:previewContent];
-    __weak typeof(self) weakSelf = self;
-    if (validateUrl.host || validateUrl.scheme) { // is html
-        [self addLog:@"preview html url ..."];
-        [self.previewPlayableAds presentFromRootViewController:self
-            withURL:previewContent
-            isInterstitial:YES
-            isLandingPage:NO
-            itunesID:@(1167885749)
-            success:^{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    weakSelf.previewBtn.enabled = YES;
-                    weakSelf.landingPageBtn.enabled = YES;
-                    [weakSelf addLog:@"present html url"];
-                });
-
-            }
-            dismiss:^{
-                [weakSelf addLog:@"dismiss preview ad"];
-            }
-            failure:^(NSError *_Nonnull error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    weakSelf.landingPageBtn.enabled = YES;
-                    [weakSelf addLog:@"present html url"];
-                });
-                [weakSelf addLog:@"preview html url failed"];
-            }];
-        return;
-    }
-
-    // is ad id
-    [self addLog:@"preview ad id ..."];
-    [self.previewPlayableAds presentFromRootViewController:self
-        withAdID:previewContent
-        success:^{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.previewBtn.enabled = YES;
-                weakSelf.landingPageBtn.enabled = YES;
-            });
-            [weakSelf addLog:@"present ad id"];
-        }
-        dismiss:^{
-            [weakSelf addLog:@"dismiss preview ad"];
-        }
-        failure:^(NSError *_Nonnull error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.previewBtn.enabled = YES;
-                weakSelf.landingPageBtn.enabled = YES;
-            });
-            [weakSelf addLog:@"preview ad id failed"];
-        }];
-}
-
 #pragma mark : IBAction
 
-- (IBAction)previewAction:(UIButton *)sender {
-
-    [self previewAdWith:self.previewTextField.text];
-}
-
-- (IBAction)landingPageAction:(UIButton *)sender {
-
-    NSString *landingPageText = [[PADemoUtils shared] removeSpaceAndNewline:self.landingPageField.text];
-    if (landingPageText.length == 0) {
-        [self addLog:@"preview landing page url is nil"];
-        return;
-    }
-
-    self.landingPageBtn.enabled = NO;
-
-    NSURL *validateUrl = [NSURL URLWithString:landingPageText];
-    __weak typeof(self) weakSelf = self;
-    if (validateUrl.host || validateUrl.scheme) { // is html
-        [self addLog:@"preview landingPage url ..."];
-        [self.previewPlayableAds presentFromRootViewController:self
-            withURL:landingPageText
-            isInterstitial:YES
-            isLandingPage:YES
-            itunesID:@(1167885749)
-            success:^{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    weakSelf.landingPageBtn.enabled = YES;
-                });
-                [weakSelf addLog:@"present landingPage "];
-            }
-            dismiss:^{
-                [weakSelf addLog:@"dismiss landingPage"];
-            }
-            failure:^(NSError *_Nonnull error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    weakSelf.landingPageBtn.enabled = YES;
-                });
-                [weakSelf addLog:@"preview landingPage url failed"];
-            }];
-
-        return;
-    }
-    [self addLog:@"landing page url is invalid"];
-}
-- (IBAction)scanAction:(UIButton *)sender {
-    [self addLog:@"scan ad ..."];
-
-    QRCodeReader *reader = [[QRCodeReader alloc] initWithMetadataObjectTypes:@[ AVMetadataObjectTypeQRCode ]];
-    QRCodeReaderViewController *codeVc = [[QRCodeReaderViewController alloc] initWithCancelButtonTitle:@"Cancel"
-                                                                                            codeReader:reader
-                                                                                   startScanningAtLoad:YES
-                                                                                showSwitchCameraButton:YES
-                                                                                       showTorchButton:YES];
-    codeVc.modalPresentationStyle = UIModalPresentationFormSheet;
-    codeVc.delegate = self;
-
-    [self presentViewController:codeVc animated:YES completion:nil];
-}
 - (IBAction)requestAdAction:(UIButton *)sender {
     NSString *appId = [[PADemoUtils shared] removeSpaceAndNewline:self.appIdTextField.text];
     NSString *adUnitId = [[PADemoUtils shared] removeSpaceAndNewline:self.adUnitTextField.text];
@@ -272,27 +141,6 @@
 /// Tells the delegate that the ad is clicked
 - (void)playableAdsDidClick:(PlayableAds *)ads {
     [self addLog:@"playableAds did click"];
-}
-
-#pragma mark : QRCodeReaderDelegate
-- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result {
-    __weak typeof(self) weakSelf = self;
-    [reader dismissViewControllerAnimated:YES
-                               completion:^{
-                                   [weakSelf previewAdWith:result];
-                               }];
-}
-
-- (void)readerDidCancel:(QRCodeReaderViewController *)reader {
-    [reader dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark : getter method
-- (PlayableAdsPreviewer *)previewPlayableAds {
-    if (!_previewPlayableAds) {
-        _previewPlayableAds = [[PlayableAdsPreviewer alloc] init];
-    }
-    return _previewPlayableAds;
 }
 
 @end

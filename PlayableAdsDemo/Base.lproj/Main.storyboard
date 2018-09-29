@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgA-TN-iZ4">
-                                <rect key="frame" x="28" y="90" width="60" height="18"/>
+                                <rect key="frame" x="28" y="84" width="60" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="SJr-Rf-nWq"/>
                                 </constraints>
@@ -31,13 +31,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxg-ND-aaq">
-                                <rect key="frame" x="28" y="138" width="60" height="18"/>
+                                <rect key="frame" x="28" y="132" width="60" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="47375F08-DC61-46BF-F1A1-1FC41570DEE6" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ijj-2k-XCi">
-                                <rect key="frame" x="100" y="84" width="192" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="A650AB0D-7BFC-2A81-3066-D3170947C3DA" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ijj-2k-XCi">
+                                <rect key="frame" x="100" y="78" width="192" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="F6m-s1-Q4w"/>
                                 </constraints>
@@ -48,8 +48,8 @@
                                     <outlet property="delegate" destination="wRk-h4-PHO" id="t0F-es-i4B"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="B3944AD2-ADA4-7558-B262-9F38DDE5A6E5" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ooX-kr-XnO">
-                                <rect key="frame" x="100" y="132" width="192" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="25AED008-6B6F-BADB-F873-AE7CA61DFE98" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ooX-kr-XnO">
+                                <rect key="frame" x="100" y="126" width="192" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -58,7 +58,7 @@
                                 </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooJ-ff-ifH">
-                                <rect key="frame" x="28" y="170" width="264" height="80"/>
+                                <rect key="frame" x="28" y="164" width="264" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="4TF-tH-Gcg"/>
@@ -67,7 +67,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EiH-k6-9CO">
-                                <rect key="frame" x="0.0" y="250" width="320" height="230"/>
+                                <rect key="frame" x="0.0" y="244" width="320" height="236"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="wRk-h4-PHO" id="kWD-jL-GiK"/>
@@ -151,7 +151,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="47375F08-DC61-46BF-F1A1-1FC41570DEE6" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wNK-mX-9tE">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="A650AB0D-7BFC-2A81-3066-D3170947C3DA" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wNK-mX-9tE">
                                 <rect key="frame" x="100" y="78" width="192" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="MvH-nl-zWi"/>
@@ -163,7 +163,7 @@
                                     <outlet property="delegate" destination="lh8-XO-PXb" id="5y4-09-P4N"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3E922AE7-3D6C-2061-A224-3E8EF9E6B7BF" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="em5-j8-IBp">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="DC9E199C-7C0B-FBFC-7E5A-26E7B5EE6BB3" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="em5-j8-IBp">
                                 <rect key="frame" x="100" y="126" width="192" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

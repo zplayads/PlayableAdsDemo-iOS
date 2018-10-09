@@ -123,7 +123,7 @@ You are available to realize this callback to reward users, only valid for rewar
 - If you want to request the next ad manually, please set ```playableAd.autoload = NO``` to disable auto-loading. Auto-loading is the default setting.
 
 
-#### 3.1.6 Callback of state of ad from PlayableAdsDelegate 
+#### 3.1.6 Ad State Callback from PlayableAdsDelegate 
 
 ```objective-c
 #pragma mark - PlayableAdsDelegate
@@ -131,11 +131,11 @@ You are available to realize this callback to reward users, only valid for rewar
 - (void)playableAdsDidRewardUser:(PlayableAds *)ads {
     NSLog(@"Advertising successfully presented");
 }
-/// succeed load ad, return object PlayableAds.
+/// succeed to load ad, return object PlayableAds.
 - (void)playableAdsDidLoad:(PlayableAds *)ads {
     NSLog(@"Advertising is ready to play.");
 }
-/// failed to load ad
+/// fail to load ad
 - (void)playableAds:(PlayableAds *)ads didFailToLoadWithError:(NSError *)error {
     NSLog(@"There was a problem loading advertising: %@", error);
 }
@@ -181,7 +181,7 @@ b. Initialize nativeExpressAd, get ad, and set callback.
 
 ```objective-c
 CGFloat width = [UIScreen mainScreen].bounds.size.width;
-// adSize (size of adUnit) is set by you，SDK will return an adview which suits for the adSizeSDK
+// adSize (size of adUnit) is set by you，SDK will return an adview which suits for the adSize
 self.nativeExpressAd =
         [[PANativeExpressAd alloc] initWithAdUnitID:@"Your Ad-Unit-ID" appID:@"Your App-ID" adSize:CGSizeMake(width, 300)];
 self.nativeExpressAd.delegate = self;
@@ -248,8 +248,6 @@ self.nativeAd.delegate = self;
 ```
 
 #### 3.3.3 Render and Display
-
-Check callback state of nativeAd. When callback state 
 
 You need to check callback state in nativeAd. If the state is successful, a PANativeAdModel type object will be returned. Then, you need to render ad in proper time and display the ad.
 

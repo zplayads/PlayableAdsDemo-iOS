@@ -2,13 +2,14 @@
 
 ## 1.概述
 
-### 1.1.面向读者
+### 1.1 面向读者
 本产品面向需要在Xcode工程中接入ZPLAY Ads SDK的开发人员。
-### 1.2.开发环境
+### 1.2 开发环境
 - 操作系统：Mac OS X10.8.5版本及以上
 - 开发环境：Xcode7及以上版本
 - 部署目标：iOS8及以上
-### 1.3.术语介绍
+
+### 1.3 术语介绍
 **APPID**：应用ID，是您在ZPLAY Ads平台创建媒体时获取的ID;
 
 **adUnitID**：广告位ID，是您在ZPLAY Ads告平台为您的应用创建的广告位置的ID。
@@ -78,9 +79,11 @@ return ad;
 注：您在测试中可使用如下ID进行测试，测试ID不会产生收益，应用上线时请使用您申请的正式ID。
 
 | 操作系统 | 广告形式 | App_ID                               | Ad_Unit_ID                           |
-| ---- | ---- | ------------------------------------ | ------------------------------------ |
-| iOS  | 激励视频 | A650AB0D-7BFC-2A81-3066-D3170947C3DA | BAE5DAAC-04A2-2591-D5B0-38FA846E45E7 |
-| iOS  | 插屏   | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 0868EBC0-7768-40CA-4226-F9924221C8EB |
+| --------| ---- | ------------------------------------ | ------------------------------------ |
+| iOS     | 激励视频 | A650AB0D-7BFC-2A81-3066-D3170947C3DA | BAE5DAAC-04A2-2591-D5B0-38FA846E45E7 |
+| iOS     | 插屏          | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 0868EBC0-7768-40CA-4226-F9924221C8EB |
+| iOS     | 原生托管渲染   | A650AB0D-7BFC-2A81-3066-D3170947C3DA | DC9E199C-7C0B-FBFC-7E5A-26E7B5EE6BB3 |
+| iOS     | 原生自渲染     | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 25AED008-6B6F-BADB-F873-AE7CA61DFE98 |
 
 #### 3.1.2 展示广告
 
@@ -124,7 +127,7 @@ return ad;
 - 广告展示完成或请求失败时会自动加载下一条广告，如果自动加载失败会在30s后重试。
 - 若您需要手动加载下一条广告，可将通过```playableAd.autoload = NO```来设置SDK不自动加载下一条广告。默认为自动加载。
 
-#### 3.1.5 PlayableAdsDelegate返回广告状态的回调
+#### 3.1.6 PlayableAdsDelegate返回广告状态的回调
 
 ```objective-c
 #pragma mark - PlayableAdsDelegate
@@ -207,15 +210,15 @@ self.nativeExpressAd.delegate = self;
 PANativeExpressAdDelegate提供广告拉取状态和点击的回调，您可通过此回调判断广告是否拉取成功及广告是否被点击。
 
 ```objective-c
-/// 原生模板广告加载成功，返回PANativeExpressAdView对象
+/// 原生托管渲染广告加载成功，返回PANativeExpressAdView对象
 - (void)playableNativeExpressAdDidLoad:(PANativeExpressAdView *)nativeExpressAd{
   
 }
-/// 原生模板广告加载失败，返回错误提示
+/// 原生托管渲染广告加载失败，返回错误提示
 - (void)playableNativeExpressAdDidFailWithError:(NSError *)error{
   
 }
-/// 原生模板广告被点击
+/// 原生托管渲染广告被点击
 - (void)playableNativeExpressAdDidClick:(PANativeExpressAdView *)nativeExpressAd{
   
 }

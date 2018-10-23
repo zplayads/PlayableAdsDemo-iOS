@@ -1,16 +1,20 @@
 PODS:
-  - PlayableAds (2.1.0)
+  - Masonry (1.1.0)
+  - PlayableAds (2.2.0)
 
 DEPENDENCIES:
+  - Masonry
   - PlayableAds
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Masonry
     - PlayableAds
 
 SPEC CHECKSUMS:
-  PlayableAds: 918ce69bfa751626d68ced8ecd58b8f6e931a986
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  PlayableAds: 06355fd0fbd189fc59b5f9d06d3961b47cbe243e
 
-PODFILE CHECKSUM: 2ac2636f469d83b14147aafe7db2954ccbd5308a
+PODFILE CHECKSUM: 460c6e79f461f731b79390cc1707c7e518fcd538
 
 COCOAPODS: 1.5.3

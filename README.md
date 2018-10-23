@@ -4,7 +4,15 @@
 
 ## ZPLAY Ads SDK历史版本
 
-**VERSION2.1.0** 
+**VERSION2.2.0** [click here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.2.0)
+* 增加原生广告形式，支持自渲染及托管渲染两种渲染方式
+* 优化清理缓存逻辑
+* 优化物料展示效果
+* Add native ad type, support manage rendering and self rendering
+* Optimize clean up cache logic
+* Optimize material display effect
+
+**VERSION2.1.0** [click here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.1.0)
 
 * 支持展示新样式可玩素材
 * 修复已知问题

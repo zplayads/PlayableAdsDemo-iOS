@@ -55,7 +55,7 @@ This guide is designed for the developers who are going to integrate ZPLAY Ads S
 
 ## 2.SDK Integration
 
-There are two ways to import ZPLAY Ads, you can choose one from 2.1 and 2.2.
+There are two ways to import ZPLAY Ads, you can choose one way from 2.1 and 2.2.
 
 ### 2.1 [CocoaPods](https://guides.cocoapods.org/using/getting-started) (preferred)
 #### 2.1.1 Install CocoaPods 

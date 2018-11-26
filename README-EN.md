@@ -74,6 +74,9 @@ pod 'PlayableAds'
 ```sh
 pod install
 ```
+
+If you're new to CocoaPods, see their [official documentation](https://guides.cocoapods.org/using/using-cocoapods) for info on how to create and use Podfiles.
+
 ### 2.2 Manual integration
 #### 2.2.1 Download ZPLAY Ads SDK
 Download ZPLAY Ads SDK [**HERE**](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/master/sdk-framework). When completed, please unzip .zip file to obtain PlayableAds.framework.

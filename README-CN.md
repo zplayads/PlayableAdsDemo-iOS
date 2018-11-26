@@ -51,7 +51,10 @@
 
 **adUnitID**：广告位ID，是您在ZPLAY Ads告平台为您的应用创建的广告位置的ID。
 ## 2.SDK接入
-### 2.1 CocoaPods(推荐)
+
+ZPLAY Ads提供两种接入方式，您可以在2.1与2.2中选择一种接入方式。
+
+### 2.1 [CocoaPods](https://guides.cocoapods.org/using/getting-started)(推荐)
 #### 2.1.1 安装CocoaPods/Install Cocoapods
 
 ```sh
@@ -73,6 +76,7 @@ pod 'PlayableAds'
 pod install
 ```
 ### 2.2 手动集成ZPLAY Ads SDK
+
 #### 2.2.1 下载ZPLAY Ads sdk 
 在[**此处**](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/master/sdk-framework)可以下载到ZPLAY Ads SDK，下载完成后解压.zip文件可得到PlayableAds.framework文件
 #### 2.2.2 添加到工程

@@ -3,7 +3,7 @@
     - [1.2 Develop Environment](#12-develop-environment)
     - [1.3 Terms](#13-terms)
 - [2.SDK Integration](#2sdk-integration)
-    - [2.1 CocoaPods(recommended)](#21-cocoapodsrecommended)
+    - [2.1 CocoaPods (preferred)](#21-cocoapods-preferred)
         - [2.1.1 Install CocoaPods](#211-install-cocoapods)
         - [2.1.2 Switch terminal to root directory of iOS project, create podfile.](#212-switch-terminal-to-root-directory-of-ios-project-create-podfile)
         - [2.1.3 Add ZPLAY Ads SDK into Podfile](#213-add-zplay-ads-sdk-into-podfile)
@@ -52,8 +52,12 @@ This guide is designed for the developers who are going to integrate ZPLAY Ads S
 **APPID**: ID for your Application, obtained when setting up the app within your account on ZPLAY Ads platform.
 
 **adUnitID**: ID for a specific ad placement within your App, as generated for your Apps within your account on ZPLAY Ads platform.  
+
 ## 2.SDK Integration
-### 2.1 CocoaPods(recommended)
+
+There are two ways to import ZPLAY Ads, you can choose one from 2.1 and 2.2.
+
+### 2.1 [CocoaPods](https://guides.cocoapods.org/using/getting-started) (preferred)
 #### 2.1.1 Install CocoaPods 
 ```sh
 sudo gem install cocoapods

@@ -1,4 +1,41 @@
-[TOC]
+- [1.概述](#1%E6%A6%82%E8%BF%B0)
+    - [1.1 面向读者](#11-%E9%9D%A2%E5%90%91%E8%AF%BB%E8%80%85)
+    - [1.2 开发环境](#12-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83)
+    - [1.3 术语介绍](#13-%E6%9C%AF%E8%AF%AD%E4%BB%8B%E7%BB%8D)
+- [2.SDK接入](#2sdk%E6%8E%A5%E5%85%A5)
+    - [2.1 CocoaPods(推荐)](#21-cocoapods%E6%8E%A8%E8%8D%90)
+        - [2.1.1 安装CocoaPods/Install Cocoapods](#211-%E5%AE%89%E8%A3%85cocoapodsinstall-cocoapods)
+        - [2.1.2 从终端切换至iOS项目根目录下，创建Podfile文件](#212-%E4%BB%8E%E7%BB%88%E7%AB%AF%E5%88%87%E6%8D%A2%E8%87%B3ios%E9%A1%B9%E7%9B%AE%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BApodfile%E6%96%87%E4%BB%B6)
+        - [2.1.3 将ZPLAY Ads SDK加入到Podfile文件](#213-%E5%B0%86zplay-ads-sdk%E5%8A%A0%E5%85%A5%E5%88%B0podfile%E6%96%87%E4%BB%B6)
+        - [2.1.4 安装ZPLAY Ads SDK](#214-%E5%AE%89%E8%A3%85zplay-ads-sdk)
+    - [2.2 手动集成ZPLAY Ads SDK](#22-%E6%89%8B%E5%8A%A8%E9%9B%86%E6%88%90zplay-ads-sdk)
+        - [2.2.1 下载ZPLAY Ads sdk](#221-%E4%B8%8B%E8%BD%BDzplay-ads-sdk)
+        - [2.2.2 添加到工程](#222-%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%B7%A5%E7%A8%8B)
+        - [2.2.3 添加ZPLAY Ads的依赖文件](#223-%E6%B7%BB%E5%8A%A0zplay-ads%E7%9A%84%E4%BE%9D%E8%B5%96%E6%96%87%E4%BB%B6)
+        - [2.2.4 其它设置](#224-%E5%85%B6%E5%AE%83%E8%AE%BE%E7%BD%AE)
+- [3.接入代码](#3%E6%8E%A5%E5%85%A5%E4%BB%A3%E7%A0%81)
+    - [3.1 激励视频/插屏广告](#31-%E6%BF%80%E5%8A%B1%E8%A7%86%E9%A2%91%E6%8F%92%E5%B1%8F%E5%B9%BF%E5%91%8A)
+        - [3.1.1 初始化视频/插屏](#311-%E5%88%9D%E5%A7%8B%E5%8C%96%E8%A7%86%E9%A2%91%E6%8F%92%E5%B1%8F)
+        - [3.1.2 展示广告](#312-%E5%B1%95%E7%A4%BA%E5%B9%BF%E5%91%8A)
+        - [3.1.3 判断广告是否加载完成](#313-%E5%88%A4%E6%96%AD%E5%B9%BF%E5%91%8A%E6%98%AF%E5%90%A6%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%88%90)
+        - [3.1.4 获取奖励](#314-%E8%8E%B7%E5%8F%96%E5%A5%96%E5%8A%B1)
+        - [3.1.5 请求下一条广告](#315-%E8%AF%B7%E6%B1%82%E4%B8%8B%E4%B8%80%E6%9D%A1%E5%B9%BF%E5%91%8A)
+        - [3.1.6 PlayableAdsDelegate返回广告状态的回调](#316-playableadsdelegate%E8%BF%94%E5%9B%9E%E5%B9%BF%E5%91%8A%E7%8A%B6%E6%80%81%E7%9A%84%E5%9B%9E%E8%B0%83)
+    - [3.2 原生广告(托管渲染)接入代码](#32-%E5%8E%9F%E7%94%9F%E5%B9%BF%E5%91%8A%E6%89%98%E7%AE%A1%E6%B8%B2%E6%9F%93%E6%8E%A5%E5%85%A5%E4%BB%A3%E7%A0%81)
+        - [3.2.1 初始化nativeExpressAd](#321-%E5%88%9D%E5%A7%8B%E5%8C%96nativeexpressad)
+        - [3.2.2 加载原生广告](#322-%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%94%9F%E5%B9%BF%E5%91%8A)
+        - [3.2.3 渲染曝光](#323-%E6%B8%B2%E6%9F%93%E6%9B%9D%E5%85%89)
+        - [3.2.4 广告拉取状态及点击回调](#324-%E5%B9%BF%E5%91%8A%E6%8B%89%E5%8F%96%E7%8A%B6%E6%80%81%E5%8F%8A%E7%82%B9%E5%87%BB%E5%9B%9E%E8%B0%83)
+    - [3.3 原生广告(自渲染)接入代码](#33-%E5%8E%9F%E7%94%9F%E5%B9%BF%E5%91%8A%E8%87%AA%E6%B8%B2%E6%9F%93%E6%8E%A5%E5%85%A5%E4%BB%A3%E7%A0%81)
+        - [3.3.1 初始化nativeAd](#331-%E5%88%9D%E5%A7%8B%E5%8C%96nativead)
+        - [3.3.2 加载原生广告](#332-%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%94%9F%E5%B9%BF%E5%91%8A)
+        - [3.3.3 渲染曝光](#333-%E6%B8%B2%E6%9F%93%E6%9B%9D%E5%85%89)
+        - [3.3.4 广告拉取状态及点击回调](#334-%E5%B9%BF%E5%91%8A%E6%8B%89%E5%8F%96%E7%8A%B6%E6%80%81%E5%8F%8A%E7%82%B9%E5%87%BB%E5%9B%9E%E8%B0%83)
+- [4 注意事项](#4-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
+    - [4.1 请求广告返回400错误](#41-%E8%AF%B7%E6%B1%82%E5%B9%BF%E5%91%8A%E8%BF%94%E5%9B%9E400%E9%94%99%E8%AF%AF)
+    - [4.2 展示广告时出现黑屏](#42-%E5%B1%95%E7%A4%BA%E5%B9%BF%E5%91%8A%E6%97%B6%E5%87%BA%E7%8E%B0%E9%BB%91%E5%B1%8F)
+    - [4.3 尽早请求广告](#43-%E5%B0%BD%E6%97%A9%E8%AF%B7%E6%B1%82%E5%B9%BF%E5%91%8A)
+    - [4.4 插屏广告与激励视频广告](#44-%E6%8F%92%E5%B1%8F%E5%B9%BF%E5%91%8A%E4%B8%8E%E6%BF%80%E5%8A%B1%E8%A7%86%E9%A2%91%E5%B9%BF%E5%91%8A)
 
 ## 1.概述
 
@@ -14,7 +51,10 @@
 
 **adUnitID**：广告位ID，是您在ZPLAY Ads告平台为您的应用创建的广告位置的ID。
 ## 2.SDK接入
-### 2.1 CocoaPods(推荐)
+
+ZPLAY Ads提供两种接入方式，您可以在2.1与2.2中选择一种接入方式。
+
+### 2.1 [CocoaPods](https://guides.cocoapods.org/using/getting-started)(推荐)
 #### 2.1.1 安装CocoaPods/Install Cocoapods
 
 ```sh
@@ -35,7 +75,11 @@ pod 'PlayableAds'
 ```sh
 pod install
 ```
+
+如果您第一次使用Cocoapods，请参考他们的[官方文档](https://guides.cocoapods.org/using/using-cocoapods)，了解如何创建和使用Podfiles.
+
 ### 2.2 手动集成ZPLAY Ads SDK
+
 #### 2.2.1 下载ZPLAY Ads sdk 
 在[**此处**](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/master/sdk-framework)可以下载到ZPLAY Ads SDK，下载完成后解压.zip文件可得到PlayableAds.framework文件
 #### 2.2.2 添加到工程

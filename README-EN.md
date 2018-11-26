@@ -1,6 +1,47 @@
+- [1. Overview](#1-overview)
+    - [1.1 Introduction](#11-introduction)
+    - [1.2 Develop Environment](#12-develop-environment)
+    - [1.3 Terms](#13-terms)
+- [2.SDK Integration](#2sdk-integration)
+    - [2.1 CocoaPods (preferred)](#21-cocoapods-preferred)
+        - [2.1.1 Install CocoaPods](#211-install-cocoapods)
+        - [2.1.2 Switch terminal to root directory of iOS project, create podfile.](#212-switch-terminal-to-root-directory-of-ios-project-create-podfile)
+        - [2.1.3 Add ZPLAY Ads SDK into Podfile](#213-add-zplay-ads-sdk-into-podfile)
+        - [2.1.4 Install ZPLAY Ads SDK](#214-install-zplay-ads-sdk)
+    - [2.2 Manual integration](#22-manual-integration)
+        - [2.2.1 Download ZPLAY Ads SDK](#221-download-zplay-ads-sdk)
+        - [2.2.2 Add to project](#222-add-to-project)
+        - [2.2.3 Add the dependencies of ZPLAY Ads](#223-add-the-dependencies-of-zplay-ads)
+        - [2.2.4 Others](#224-others)
+- [3. Access code](#3-access-code)
+    - [3.1 Rewarded Video/Intertitial Ad](#31-rewarded-videointertitial-ad)
+        - [3.1.1 Initialize Video/Intertitial](#311-initialize-videointertitial)
+        - [3.1.2 Show Ads](#312-show-ads)
+        - [3.1.3 Determine Whether an Add Has Been Loaded](#313-determine-whether-an-add-has-been-loaded)
+        - [3.1.4 Obtain Reward](#314-obtain-reward)
+        - [3.1.5 Request Next Ad](#315-request-next-ad)
+        - [3.1.6 Ad State Callback from PlayableAdsDelegate](#316-ad-state-callback-from-playableadsdelegate)
+    - [3.2 Access Native Ad (Managed Rendering)](#32-access-native-ad-managed-rendering)
+        - [3.2.1 Initialize nativeExpressAd](#321-initialize-nativeexpressad)
+        - [3.2.2 Load Native Ad](#322-load-native-ad)
+        - [3.2.3 Render and Display](#323-render-and-display)
+        - [3.2.4 Load State Callback and Click Callback](#324-load-state-callback-and-click-callback)
+    - [3.3 Access Native Ad (Self Rendering)](#33-access-native-ad-self-rendering)
+        - [3.3.1 Initialize nativeAd](#331-initialize-nativead)
+        - [3.3.2 Load Native Ad](#332-load-native-ad)
+        - [3.3.3 Render and Display](#333-render-and-display)
+        - [3.3.4 Load State Callback and Click Callback](#334-load-state-callback-and-click-callback)
+- [4 Considerations](#4-considerations)
+    - [4.1 Error 400](#41-error-400)
+    - [4.2 Black screen when showing an ad](#42-black-screen-when-showing-an-ad)
+    - [4.3 Request Ads ASAP](#43-request-ads-asap)
+    - [4.4 Interstitial and Rewarded Video](#44-interstitial-and-rewarded-video)
+
 ## 1. Overview
+
 ### 1.1 Introduction
 This guide is designed for the developers who are going to integrate ZPLAY Ads SDK into their Xcode project.
+
 ### 1.2 Develop Environment
 - OS: Mac OS X10.8.5 and above
 - Development environment: Xcode7 and above
@@ -11,8 +52,12 @@ This guide is designed for the developers who are going to integrate ZPLAY Ads S
 **APPID**: ID for your Application, obtained when setting up the app within your account on ZPLAY Ads platform.
 
 **adUnitID**: ID for a specific ad placement within your App, as generated for your Apps within your account on ZPLAY Ads platform.  
+
 ## 2.SDK Integration
-### 2.1 CocoaPods(recommended)
+
+There are two ways to import ZPLAY Ads, you can choose one way from 2.1 and 2.2.
+
+### 2.1 [CocoaPods](https://guides.cocoapods.org/using/getting-started) (preferred)
 #### 2.1.1 Install CocoaPods 
 ```sh
 sudo gem install cocoapods
@@ -29,6 +74,9 @@ pod 'PlayableAds'
 ```sh
 pod install
 ```
+
+If you're new to CocoaPods, see their [official documentation](https://guides.cocoapods.org/using/using-cocoapods) for info on how to create and use Podfiles.
+
 ### 2.2 Manual integration
 #### 2.2.1 Download ZPLAY Ads SDK
 Download ZPLAY Ads SDK [**HERE**](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/master/sdk-framework). When completed, please unzip .zip file to obtain PlayableAds.framework.

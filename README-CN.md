@@ -76,7 +76,7 @@ pod 'PlayableAds'
 pod install
 ```
 
-如果您第一次使用Cocoapods，请参考他们的[官方文档ion](https://guides.cocoapods.org/using/using-cocoapods)，了解如何创建和使用Podfiles.
+如果您第一次使用Cocoapods，请参考他们的[官方文档](https://guides.cocoapods.org/using/using-cocoapods)，了解如何创建和使用Podfiles.
 
 ### 2.2 手动集成ZPLAY Ads SDK
 

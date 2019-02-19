@@ -79,10 +79,11 @@ If you're new to CocoaPods, see their [official documentation](https://guides.co
 
 ### 2.2 Manual integration
 #### 2.2.1 Download ZPLAY Ads SDK
-Download ZPLAY Ads SDK [**HERE**](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/master/sdk-framework). When completed, please unzip .zip file to obtain PlayableAds.framework.
+Download ZPLAY Ads SDK [**HERE**](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/master/sdk-framework). When completed, please unzip .zip file to obtain PlayableAds.
 #### 2.2.2 Add to project
-Add the PlayableAds.framework you obtained in 2.2.1 to project.![图片](./tutorialImg/manual-add-files.png)
+Add the PlayableAds files you obtained in 2.2.1 to project.![图片](./tutorialImg/manual-add-files.png)
 ![图片](./tutorialImg/manual-add-files2.png)
+
 #### 2.2.3 Add the dependencies of ZPLAY Ads
 The dependency frameworks of ZPLAY Ads consist of UIKit, Foundation, WebKit, SystemConfiguration, MobileCoreServices, AdSupport, CoreLocation, CoreTelephony, StoreKit, Security.
 
@@ -330,11 +331,11 @@ Check whether the project has been set a Display Name.
 
 ### 4.2 Black screen when showing an ad
 There may be a http link in the ad. You can add the following codes in info.plist:
-```
+```xml
 <key>NSAppTransportSecurity</key>
 <dict>
-<key>NSAllowsArbitraryLoads</key>
-<true/>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
 </dict>
 ```
 ### 4.3 Request Ads ASAP

@@ -81,10 +81,11 @@ pod install
 ### 2.2 手动集成ZPLAY Ads SDK
 
 #### 2.2.1 下载ZPLAY Ads sdk 
-在[**此处**](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/master/sdk-framework)可以下载到ZPLAY Ads SDK，下载完成后解压.zip文件可得到PlayableAds.framework文件
+在[**此处**](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/master/sdk-framework)可以下载到ZPLAY Ads SDK，下载完成后解压.zip文件可得到 PlayableAds 文件
 #### 2.2.2 添加到工程
-将上一步得到的PlayableAds.framework添加到项目中 ![图片](./tutorialImg/manual-add-files.png)
+将上一步得到的 PlayableAds 文件添加到项目中 ![图片](./tutorialImg/manual-add-files.png)
 ![图片](./tutorialImg/manual-add-files2.png)
+
 #### 2.2.3 添加ZPLAY Ads的依赖文件
 ZPLAY Ads依赖的framework有：UIKit, Foundation, WebKit, SystemConfiguration, MobileCoreServices, AdSupport, CoreLocation, CoreTelephony, StoreKit, Security。
 
@@ -331,11 +332,11 @@ PANativeAdDelegate提供广告拉取状态和点击的回调，您可通过此�
 
 ### 4.2 展示广告时出现黑屏
 广告中可能出现http链接，在info.plist中添加以下代码
-```
+```xml
 <key>NSAppTransportSecurity</key>
 <dict>
-<key>NSAllowsArbitraryLoads</key>
-<true/>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
 </dict>
 ```
 ### 4.3 尽早请求广告

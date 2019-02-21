@@ -1,6 +1,6 @@
 PODS:
   - Masonry (1.1.0)
-  - PlayableAds (2.3.0)
+  - PlayableAds (2.4.0)
 
 DEPENDENCIES:
   - Masonry
@@ -13,7 +13,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  PlayableAds: ae3267eb98ac6fad73fce5df55b953b297a75cdc
+  PlayableAds: 916e7f9f51a8944769abc45d3b4358f844f19033
 
 PODFILE CHECKSUM: 460c6e79f461f731b79390cc1707c7e518fcd538
 

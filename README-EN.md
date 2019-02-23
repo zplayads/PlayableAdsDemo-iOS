@@ -36,6 +36,8 @@
     - [4.2 Black screen when showing an ad](#42-black-screen-when-showing-an-ad)
     - [4.3 Request Ads ASAP](#43-request-ads-asap)
     - [4.4 Interstitial and Rewarded Video](#44-interstitial-and-rewarded-video)
+- [5 Test](#5-Test)
+
 
 ## 1. Overview
 
@@ -345,3 +347,14 @@ To ensure the ad can be loaded successfully, you are suggested to request ads AS
 ### 4.4 Interstitial and Rewarded Video
 * From v2.0.3, you can choose to act as interstitial or rewarded video when applying for ad unit. If interstitial, the ad can be terminated during playing and no rewards will be given. If rewarded video, the ad can't be terminated during playing, and a reward will be given after playing.
 * Except```- (void)playableAdsDidRewardUser:(PlayableAds *)ads```, which will not be triggered, all call and callback methods of interstitial are the same as those of rewarded video. 
+
+## 5 Test
+
+You can use the following test ID when testing. Test ID won't generate any revenue, please use official ID when you release your App.
+
+| OS   | Ad_type                     | App_ID                               | Ad_Unit_ID                           |
+| ---- | --------------------------- | ------------------------------------ | ------------------------------------ |
+| iOS  | Rewarded video              | A650AB0D-7BFC-2A81-3066-D3170947C3DA | BAE5DAAC-04A2-2591-D5B0-38FA846E45E7 |
+| iOS  | Intertitial                 | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 0868EBC0-7768-40CA-4226-F9924221C8EB |
+| iOS  | Native Managed Rendering    | A650AB0D-7BFC-2A81-3066-D3170947C3DA | DC9E199C-7C0B-FBFC-7E5A-26E7B5EE6BB3 |
+| iOS  | Native Self Rendering       | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 25AED008-6B6F-BADB-F873-AE7CA61DFE98 |

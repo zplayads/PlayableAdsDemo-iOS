@@ -89,7 +89,7 @@ pod install
 ![图片](./tutorialImg/manual-add-files2.png)
 
 #### 2.2.3 添加ZPLAY Ads的依赖文件
-ZPLAY Ads依赖的framework有：UIKit, Foundation, WebKit, SystemConfiguration, MobileCoreServices, AdSupport, CoreLocation, CoreTelephony, StoreKit, Security。
+ZPLAY Ads依赖的framework有：UIKit, Foundation, WebKit, SystemConfiguration, MobileCoreServices, AdSupport, CoreTelephony, StoreKit, Security。
 
 ZPLAY Ads依赖的libraries有：xml2.
 

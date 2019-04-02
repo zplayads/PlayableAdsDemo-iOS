@@ -4,6 +4,11 @@
 
 ## ZPLAY Ads SDK历史版本
 
+
+**VERSION2.4.2** 
+* 移除部分权限
+* Remove some permissions 
+
 **VERSION2.4.0** 
 * 支持展示新样式可玩物料
 * 修复原生广告的展示问题

@@ -4,7 +4,12 @@
 
 ## ZPLAY Ads SDK历史版本
 
-**VERSION2.4.0** 
+
+**VERSION2.4.2** 
+* 移除部分权限
+* Remove some permissions 
+
+**VERSION2.4.0** [click here to download](https://github.com/zplayads/PlayableAdsDemo-iOS/tree/2.4.0)
 * 支持展示新样式可玩物料
 * 修复原生广告的展示问题
 * 优化广告请求逻辑

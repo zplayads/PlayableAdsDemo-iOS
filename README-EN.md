@@ -87,7 +87,7 @@ Add the PlayableAds files you obtained in 2.2.1 to project.![图片](./tutorialI
 ![图片](./tutorialImg/manual-add-files2.png)
 
 #### 2.2.3 Add the dependencies of ZPLAY Ads
-The dependency frameworks of ZPLAY Ads consist of UIKit, Foundation, WebKit, SystemConfiguration, MobileCoreServices, AdSupport, CoreLocation, CoreTelephony, StoreKit, Security.
+The dependency frameworks of ZPLAY Ads consist of UIKit, Foundation, WebKit, SystemConfiguration, MobileCoreServices, AdSupport, CoreTelephony, StoreKit, Security.
 
 The dependency libraries of ZPLAY Ads is xml2.
 

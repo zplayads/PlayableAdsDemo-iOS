@@ -316,7 +316,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PlayableAdsDemo/Pods-PlayableAdsDemo-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PlayableAdsDemo/Pods-PlayableAdsDemo-resources.sh",
 				"${PODS_ROOT}/PlayableAds/Resources/ZplayMuteListener.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -325,7 +325,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlayableAdsDemo/Pods-PlayableAdsDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlayableAdsDemo/Pods-PlayableAdsDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A368ED822D5820E4C2F685CA /* [CP] Check Pods Manifest.lock */ = {

@@ -1,42 +1,49 @@
 - [1. Overview](#1-overview)
-    - [1.1 Introduction](#11-introduction)
-    - [1.2 Develop Environment](#12-develop-environment)
-    - [1.3 Terms](#13-terms)
+  - [1.1 Introduction](#11-introduction)
+  - [1.2 Develop Environment](#12-develop-environment)
+  - [1.3 Terms](#13-terms)
 - [2.SDK Integration](#2sdk-integration)
-    - [2.1 CocoaPods (preferred)](#21-cocoapods-preferred)
-        - [2.1.1 Install CocoaPods](#211-install-cocoapods)
-        - [2.1.2 Switch terminal to root directory of iOS project, create podfile.](#212-switch-terminal-to-root-directory-of-ios-project-create-podfile)
-        - [2.1.3 Add ZPLAY Ads SDK into Podfile](#213-add-zplay-ads-sdk-into-podfile)
-        - [2.1.4 Install ZPLAY Ads SDK](#214-install-zplay-ads-sdk)
-    - [2.2 Manual integration](#22-manual-integration)
-        - [2.2.1 Download ZPLAY Ads SDK](#221-download-zplay-ads-sdk)
-        - [2.2.2 Add to project](#222-add-to-project)
-        - [2.2.3 Add the dependencies of ZPLAY Ads](#223-add-the-dependencies-of-zplay-ads)
-        - [2.2.4 Others](#224-others)
+  - [2.1 CocoaPods (preferred)](#21-cocoapods-preferred)
+    - [2.1.1 Install CocoaPods](#211-install-cocoapods)
+    - [2.1.2 Switch terminal to root directory of iOS project, create podfile.](#212-switch-terminal-to-root-directory-of-ios-project-create-podfile)
+    - [2.1.3 Add ZPLAY Ads SDK into Podfile](#213-add-zplay-ads-sdk-into-podfile)
+    - [2.1.4 Install ZPLAY Ads SDK](#214-install-zplay-ads-sdk)
+  - [2.2 Manual integration](#22-manual-integration)
+    - [2.2.1 Download ZPLAY Ads SDK](#221-download-zplay-ads-sdk)
+    - [2.2.2 Add to project](#222-add-to-project)
+    - [2.2.3 Add the dependencies of ZPLAY Ads](#223-add-the-dependencies-of-zplay-ads)
+    - [2.2.4 Others](#224-others)
 - [3. Access code](#3-access-code)
-    - [3.1 Rewarded Video/Intertitial Ad](#31-rewarded-videointertitial-ad)
-        - [3.1.1 Initialize Video/Intertitial](#311-initialize-videointertitial)
-        - [3.1.2 Show Ads](#312-show-ads)
-        - [3.1.3 Determine Whether an Add Has Been Loaded](#313-determine-whether-an-add-has-been-loaded)
-        - [3.1.4 Obtain Reward](#314-obtain-reward)
-        - [3.1.5 Request Next Ad](#315-request-next-ad)
-        - [3.1.6 Ad State Callback from PlayableAdsDelegate](#316-ad-state-callback-from-playableadsdelegate)
-    - [3.2 Access Native Ad (Managed Rendering)](#32-access-native-ad-managed-rendering)
-        - [3.2.1 Initialize nativeExpressAd](#321-initialize-nativeexpressad)
-        - [3.2.2 Load Native Ad](#322-load-native-ad)
-        - [3.2.3 Render and Display](#323-render-and-display)
-        - [3.2.4 Load State Callback and Click Callback](#324-load-state-callback-and-click-callback)
-    - [3.3 Access Native Ad (Self Rendering)](#33-access-native-ad-self-rendering)
-        - [3.3.1 Initialize nativeAd](#331-initialize-nativead)
-        - [3.3.2 Load Native Ad](#332-load-native-ad)
-        - [3.3.3 Render and Display](#333-render-and-display)
-        - [3.3.4 Load State Callback and Click Callback](#334-load-state-callback-and-click-callback)
+  - [3.1 Rewarded Video/Intertitial Ad](#31-rewarded-videointertitial-ad)
+    - [3.1.1 Initialize Video/Intertitial](#311-initialize-videointertitial)
+    - [3.1.2 Show Ads](#312-show-ads)
+    - [3.1.3 Determine Whether an Add Has Been Loaded](#313-determine-whether-an-add-has-been-loaded)
+    - [3.1.4 Obtain Reward](#314-obtain-reward)
+    - [3.1.5 Request Next Ad](#315-request-next-ad)
+    - [3.1.6 Ad State Callback from PlayableAdsDelegate](#316-ad-state-callback-from-playableadsdelegate)
+  - [3.2 Access Native Ad (Managed Rendering)](#32-access-native-ad-managed-rendering)
+    - [3.2.1 Initialize nativeExpressAd](#321-initialize-nativeexpressad)
+    - [3.2.2 Load Native Ad](#322-load-native-ad)
+    - [3.2.3 Render and Display](#323-render-and-display)
+    - [3.2.4 Load State Callback and Click Callback](#324-load-state-callback-and-click-callback)
+  - [3.3 Access Native Ad (Self Rendering)](#33-access-native-ad-self-rendering)
+    - [3.3.1 Initialize nativeAd](#331-initialize-nativead)
+    - [3.3.2 Load Native Ad](#332-load-native-ad)
+    - [3.3.3 Render and Display](#333-render-and-display)
+    - [3.3.4 Load State Callback and Click Callback](#334-load-state-callback-and-click-callback)
+  - [3.4 Banner](#34-banner)
+    - [3.4.1 Init Banner](#341-init-banner)
+    - [3.4.2 Request Banner](#342-request-banner)
+    - [3.4.3 Implement Delegate](#343-implement-delegate)
+    - [3.4.4 Destory Banner](#344-destory-banner)
 - [4 Considerations](#4-considerations)
-    - [4.1 Error 400](#41-error-400)
-    - [4.2 Black screen when showing an ad](#42-black-screen-when-showing-an-ad)
-    - [4.3 Request Ads ASAP](#43-request-ads-asap)
-    - [4.4 Interstitial and Rewarded Video](#44-interstitial-and-rewarded-video)
-- [5 Test](#5-Test)
+  - [4.1 Error 400](#41-error-400)
+  - [4.2 Black screen when showing an ad](#42-black-screen-when-showing-an-ad)
+  - [4.3 Request Ads ASAP](#43-request-ads-asap)
+  - [4.4 Interstitial and Rewarded Video](#44-interstitial-and-rewarded-video)
+  - [4.5 GDPR](#45-gdpr)
+    - [Setting GDPR](#setting-gdpr)
+- [5 Test](#5-test)
 
 
 ## 1. Overview
@@ -325,6 +332,63 @@ PANativeAdDelegate provides load state callback and click callback. You can judg
   
 }
 ```
+### 3.4 Banner
+#### 3.4.1 Init Banner
+```objective-c
+#import <PlayableAds/AtmosplayAdsBanner.h>
+@interface AtmosplayAdsBannerViewController () <AtmosplayAdsBannerDelegate>
+@property (nonatomic) AtmosplayAdsBanner *bannerView;
+@end
+
+@implementation AtmosplayAdsBannerViewController
+- (void)initBanner {
+    self.bannerView =
+        [[AtmosplayAdsBanner alloc] initWithAdUnitID:@"YOUR_ADUNIT_ID" appID:@"YOUR_APP_ID" rootViewController:self];
+    self.bannerView.delegate = self;
+    self.bannerView.bannerSize = kAtmosplayAdsBanner320x50;
+}
+@end
+```
+#### 3.4.2 Request Banner
+```objective-c
+- (void)requestBanner {
+    if (!self.bannerView) {
+        return;
+    }
+    [self.bannerView loadAd];
+}
+```
+#### 3.4.3 Implement Delegate
+```objective-c
+#pragma mark - banner view delegate
+/// Tells the delegate that an ad has been successfully loaded.
+- (void)atmosplayAdsBannerViewDidLoad:(AtmosplayAdsBanner *)bannerView {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CGFloat y = self.view.frame.size.height - (bannerView.frame.size.height / 2);
+        if (@available(iOS 11, *)) {
+            y -= self.view.safeAreaInsets.bottom;
+        }
+        bannerView.center = CGPointMake(self.view.frame.size.width / 2, y);
+        [self.view addSubview:bannerView];
+    });
+}
+
+/// Tells the delegate that a request failed.
+- (void)atmosplayAdsBannerView:(AtmosplayAdsBanner *)bannerView didFailWithError:(NSError *)error {
+}
+
+/// Tells the delegate that the banner view has been clicked.
+- (void)atmosplayAdsBannerViewDidClick:(AtmosplayAdsBanner *)bannerView {
+}
+```
+#### 3.4.4 Destory Banner
+```objective-c
+- (void)destroyBanner {
+    self.bannerView.delegate = nil;
+    [self.bannerView removeFromSuperview];
+    self.bannerView = nil;
+}
+```
 
 ## 4 Considerations
 ### 4.1 Error 400
@@ -347,6 +411,23 @@ To ensure the ad can be loaded successfully, you are suggested to request ads AS
 ### 4.4 Interstitial and Rewarded Video
 * From v2.0.3, you can choose to act as interstitial or rewarded video when applying for ad unit. If interstitial, the ad can be terminated during playing and no rewards will be given. If rewarded video, the ad can't be terminated during playing, and a reward will be given after playing.
 * Except```- (void)playableAdsDidRewardUser:(PlayableAds *)ads```, which will not be triggered, all call and callback methods of interstitial are the same as those of rewarded video. 
+
+### 4.5 GDPR
+This documentation is provided for compliance with the European Union's General Data Protection Regulation (GDPR). If you are collecting consent from your users, you can make use of APIs discussed below to inform YumiMediationSDK and some downstream consumers of this information. Get more information, please visit our official website.
+#### Setting GDPR
+```objective-c
+typedef enum : NSUInteger {
+    /// The user has granted consent for personalized ads.
+    PlayableAdsConsentStatusPersonalized,
+    /// The user has granted consent for non-personalized ads.
+    PlayableAdsConsentStatusNonPersonalized,
+    /// The user has neither granted nor declined consent for personalized or non-personalized ads.
+    PlayableAdsConsentStatusUnknown,
+} PlayableAdsConsentStatus;
+
+[[PlayableAdsGDPR sharedGDPRManager] updatePlayableAdsConsentStatus:PlayableAdsConsentStatusPersonalized];
+```
+
 
 ## 5 Test
 

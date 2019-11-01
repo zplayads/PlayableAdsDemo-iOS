@@ -1,20 +1,21 @@
 PODS:
   - Masonry (1.1.0)
-  - PlayableAds (2.4.3)
+  - PlayableAds (2.6.0)
 
 DEPENDENCIES:
   - Masonry
   - PlayableAds
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Masonry
+  https://github.com/yumimobi/Specs.git:
     - PlayableAds
 
 SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  PlayableAds: 19788ba6d0b208d4711660216b2426607adc1948
+  PlayableAds: d929e4d90b898b3d15f5e942f2e05cd6b121fa5b
 
-PODFILE CHECKSUM: 460c6e79f461f731b79390cc1707c7e518fcd538
+PODFILE CHECKSUM: cab2b4ee8ff9c3f76abada6b2ebbda91a2b7533c
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4

@@ -130,14 +130,6 @@ ad.delegate = self;
 return ad;
 }
 ```
-注：您在测试中可使用如下ID进行测试，测试ID不会产生收益，应用上线时请使用您申请的正式ID。
-
-| 操作系统 | 广告形式 | App_ID                               | Ad_Unit_ID                           |
-| --------| ---- | ------------------------------------ | ------------------------------------ |
-| iOS     | 激励视频 | A650AB0D-7BFC-2A81-3066-D3170947C3DA | BAE5DAAC-04A2-2591-D5B0-38FA846E45E7 |
-| iOS     | 插屏          | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 0868EBC0-7768-40CA-4226-F9924221C8EB |
-| iOS     | 原生托管渲染   | A650AB0D-7BFC-2A81-3066-D3170947C3DA | DC9E199C-7C0B-FBFC-7E5A-26E7B5EE6BB3 |
-| iOS     | 原生自渲染     | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 25AED008-6B6F-BADB-F873-AE7CA61DFE98 |
 
 #### 3.1.2 展示广告
 
@@ -440,3 +432,4 @@ typedef enum : NSUInteger {
 | iOS     | 插屏          | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 0868EBC0-7768-40CA-4226-F9924221C8EB |
 | iOS     | 原生托管渲染   | A650AB0D-7BFC-2A81-3066-D3170947C3DA | DC9E199C-7C0B-FBFC-7E5A-26E7B5EE6BB3 |
 | iOS     | 原生自渲染     | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 25AED008-6B6F-BADB-F873-AE7CA61DFE98 |
+| iOS     | Banner     | A650AB0D-7BFC-2A81-3066-D3170947C3DA |  |

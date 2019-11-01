@@ -128,14 +128,6 @@ Initialize ZPLAY Ads, show ad.
     return ad;
 }
 ```
-Note: You can use the following test ID when testing. Test ID won't generate any revenue, please use official ID when you release your App.
-
-| OS   | Ad_type                     | App_ID                               | Ad_Unit_ID                           |
-| ---- | --------------------------- | ------------------------------------ | ------------------------------------ |
-| iOS  | Rewarded video              | A650AB0D-7BFC-2A81-3066-D3170947C3DA | BAE5DAAC-04A2-2591-D5B0-38FA846E45E7 |
-| iOS  | Intertitial                 | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 0868EBC0-7768-40CA-4226-F9924221C8EB |
-| iOS  | Native Managed Rendering    | A650AB0D-7BFC-2A81-3066-D3170947C3DA | DC9E199C-7C0B-FBFC-7E5A-26E7B5EE6BB3 |
-| iOS  | Native Self Rendering       | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 25AED008-6B6F-BADB-F873-AE7CA61DFE98 |
 
 #### 3.1.2 Show Ads
 
@@ -439,3 +431,4 @@ You can use the following test ID when testing. Test ID won't generate any reven
 | iOS  | Intertitial                 | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 0868EBC0-7768-40CA-4226-F9924221C8EB |
 | iOS  | Native Managed Rendering    | A650AB0D-7BFC-2A81-3066-D3170947C3DA | DC9E199C-7C0B-FBFC-7E5A-26E7B5EE6BB3 |
 | iOS  | Native Self Rendering       | A650AB0D-7BFC-2A81-3066-D3170947C3DA | 25AED008-6B6F-BADB-F873-AE7CA61DFE98 |
+| iOS  | Banner       | A650AB0D-7BFC-2A81-3066-D3170947C3DA |  |

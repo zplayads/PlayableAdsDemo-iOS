@@ -32,6 +32,31 @@
     }
 
     [self setDelegate];
+
+    [self setVauleToTextField];
+}
+
+- (void)setVauleToTextField {
+
+    kZplayAdsType adType = self.isVideo ? kZplayAdsType_video : kZplayAdsType_interstitial;
+    PAAdConfigInfo *adConfig = [[PADemoUtils shared] getAdInfo:adType];
+    if (!adConfig) {
+        [self saveValueToConfig];
+        return;
+    }
+
+    self.appIdTextField.text = adConfig.appId;
+    self.adUnitTextField.text = adConfig.placementId;
+}
+
+- (void)saveValueToConfig {
+    PAAdConfigInfo *adConfig = [[PAAdConfigInfo alloc] init];
+    adConfig.adType = self.isVideo ? kZplayAdsType_video : kZplayAdsType_interstitial;
+    ;
+    adConfig.appId = self.appIdTextField.text;
+    adConfig.placementId = self.adUnitTextField.text;
+
+    [[PADemoUtils shared] saveAdInfo:adConfig];
 }
 
 #pragma mark : set delegate
@@ -55,8 +80,7 @@
 }
 
 #pragma mark : IBAction
-
-- (IBAction)requestAdAction:(UIButton *)sender {
+- (IBAction)initAdAction:(UIButton *)sender {
     NSString *appId = [[PADemoUtils shared] removeSpaceAndNewline:self.appIdTextField.text];
     NSString *adUnitId = [[PADemoUtils shared] removeSpaceAndNewline:self.adUnitTextField.text];
 
@@ -70,20 +94,30 @@
     }
     PADemoUtils *util = [PADemoUtils shared];
 
+    [self saveValueToConfig];
+
     self.playableAd = [[PlayableAds alloc] initWithAdUnitID:adUnitId appID:appId];
     self.playableAd.delegate = self;
     self.playableAd.autoLoad = [util autoLoadAd];
     self.playableAd.channelId = [util channelID];
-    
-    NSString *requestText = @"request playable ad ";
+
+    NSString *requestText = @"init playable ad ";
     if ([util autoLoadAd]) {
-        requestText = @"auto request  playable ad ";
+        requestText = @"auto init  playable ad ";
     }
     if ([util channelID].length != 0) {
-        requestText = [NSString stringWithFormat:@"%@ and channelID is %@",requestText,[util channelID]];
+        requestText = [NSString stringWithFormat:@"%@ and channelID is %@", requestText, [util channelID]];
     }
     [self addLog:requestText];
+}
 
+- (IBAction)requestAdAction:(UIButton *)sender {
+
+    if (!self.playableAd) {
+        [self addLog:@"please init playable ad "];
+        return;
+    }
+    [self addLog:@"load playable ad "];
     [self.playableAd loadAd];
 }
 - (IBAction)presentAdAction:(UIButton *)sender {

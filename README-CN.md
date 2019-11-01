@@ -35,6 +35,7 @@
     - [3.4.1 初始化 Banner](#341-%e5%88%9d%e5%a7%8b%e5%8c%96-banner)
     - [3.4.2 请求 Banner](#342-%e8%af%b7%e6%b1%82-banner)
     - [3.4.3 实现代理方法及展示](#343-%e5%ae%9e%e7%8e%b0%e4%bb%a3%e7%90%86%e6%96%b9%e6%b3%95%e5%8f%8a%e5%b1%95%e7%a4%ba)
+    - [3.4.4 销毁 Banner](#344-%e9%94%80%e6%af%81-banner)
 - [4 注意事项](#4-%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9)
   - [4.1 请求广告返回400错误](#41-%e8%af%b7%e6%b1%82%e5%b9%bf%e5%91%8a%e8%bf%94%e5%9b%9e400%e9%94%99%e8%af%af)
   - [4.2 展示广告时出现黑屏](#42-%e5%b1%95%e7%a4%ba%e5%b9%bf%e5%91%8a%e6%97%b6%e5%87%ba%e7%8e%b0%e9%bb%91%e5%b1%8f)
@@ -380,7 +381,14 @@ PANativeAdDelegate提供广告拉取状态和点击的回调，您可通过此�
 /// Tells the delegate that the banner view has been clicked.
 - (void)atmosplayAdsBannerViewDidClick:(AtmosplayAdsBanner *)bannerView {
 }
-
+```
+#### 3.4.4 销毁 Banner
+```
+- (void)destroyBanner {
+    self.bannerView.delegate = nil;
+    [self.bannerView removeFromSuperview];
+    self.bannerView = nil;
+}
 ```
 
 ## 4 注意事项

@@ -1,42 +1,48 @@
-- [1.概述](#1%E6%A6%82%E8%BF%B0)
-    - [1.1 面向读者](#11-%E9%9D%A2%E5%90%91%E8%AF%BB%E8%80%85)
-    - [1.2 开发环境](#12-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83)
-    - [1.3 术语介绍](#13-%E6%9C%AF%E8%AF%AD%E4%BB%8B%E7%BB%8D)
-- [2.SDK接入](#2sdk%E6%8E%A5%E5%85%A5)
-    - [2.1 CocoaPods(推荐)](#21-cocoapods%E6%8E%A8%E8%8D%90)
-        - [2.1.1 安装CocoaPods/Install Cocoapods](#211-%E5%AE%89%E8%A3%85cocoapodsinstall-cocoapods)
-        - [2.1.2 从终端切换至iOS项目根目录下，创建Podfile文件](#212-%E4%BB%8E%E7%BB%88%E7%AB%AF%E5%88%87%E6%8D%A2%E8%87%B3ios%E9%A1%B9%E7%9B%AE%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BApodfile%E6%96%87%E4%BB%B6)
-        - [2.1.3 将ZPLAY Ads SDK加入到Podfile文件](#213-%E5%B0%86zplay-ads-sdk%E5%8A%A0%E5%85%A5%E5%88%B0podfile%E6%96%87%E4%BB%B6)
-        - [2.1.4 安装ZPLAY Ads SDK](#214-%E5%AE%89%E8%A3%85zplay-ads-sdk)
-    - [2.2 手动集成ZPLAY Ads SDK](#22-%E6%89%8B%E5%8A%A8%E9%9B%86%E6%88%90zplay-ads-sdk)
-        - [2.2.1 下载ZPLAY Ads sdk](#221-%E4%B8%8B%E8%BD%BDzplay-ads-sdk)
-        - [2.2.2 添加到工程](#222-%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%B7%A5%E7%A8%8B)
-        - [2.2.3 添加ZPLAY Ads的依赖文件](#223-%E6%B7%BB%E5%8A%A0zplay-ads%E7%9A%84%E4%BE%9D%E8%B5%96%E6%96%87%E4%BB%B6)
-        - [2.2.4 其它设置](#224-%E5%85%B6%E5%AE%83%E8%AE%BE%E7%BD%AE)
-- [3.接入代码](#3%E6%8E%A5%E5%85%A5%E4%BB%A3%E7%A0%81)
-    - [3.1 激励视频/插屏广告](#31-%E6%BF%80%E5%8A%B1%E8%A7%86%E9%A2%91%E6%8F%92%E5%B1%8F%E5%B9%BF%E5%91%8A)
-        - [3.1.1 初始化视频/插屏](#311-%E5%88%9D%E5%A7%8B%E5%8C%96%E8%A7%86%E9%A2%91%E6%8F%92%E5%B1%8F)
-        - [3.1.2 展示广告](#312-%E5%B1%95%E7%A4%BA%E5%B9%BF%E5%91%8A)
-        - [3.1.3 判断广告是否加载完成](#313-%E5%88%A4%E6%96%AD%E5%B9%BF%E5%91%8A%E6%98%AF%E5%90%A6%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%88%90)
-        - [3.1.4 获取奖励](#314-%E8%8E%B7%E5%8F%96%E5%A5%96%E5%8A%B1)
-        - [3.1.5 请求下一条广告](#315-%E8%AF%B7%E6%B1%82%E4%B8%8B%E4%B8%80%E6%9D%A1%E5%B9%BF%E5%91%8A)
-        - [3.1.6 PlayableAdsDelegate返回广告状态的回调](#316-playableadsdelegate%E8%BF%94%E5%9B%9E%E5%B9%BF%E5%91%8A%E7%8A%B6%E6%80%81%E7%9A%84%E5%9B%9E%E8%B0%83)
-    - [3.2 原生广告(托管渲染)接入代码](#32-%E5%8E%9F%E7%94%9F%E5%B9%BF%E5%91%8A%E6%89%98%E7%AE%A1%E6%B8%B2%E6%9F%93%E6%8E%A5%E5%85%A5%E4%BB%A3%E7%A0%81)
-        - [3.2.1 初始化nativeExpressAd](#321-%E5%88%9D%E5%A7%8B%E5%8C%96nativeexpressad)
-        - [3.2.2 加载原生广告](#322-%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%94%9F%E5%B9%BF%E5%91%8A)
-        - [3.2.3 渲染曝光](#323-%E6%B8%B2%E6%9F%93%E6%9B%9D%E5%85%89)
-        - [3.2.4 广告拉取状态及点击回调](#324-%E5%B9%BF%E5%91%8A%E6%8B%89%E5%8F%96%E7%8A%B6%E6%80%81%E5%8F%8A%E7%82%B9%E5%87%BB%E5%9B%9E%E8%B0%83)
-    - [3.3 原生广告(自渲染)接入代码](#33-%E5%8E%9F%E7%94%9F%E5%B9%BF%E5%91%8A%E8%87%AA%E6%B8%B2%E6%9F%93%E6%8E%A5%E5%85%A5%E4%BB%A3%E7%A0%81)
-        - [3.3.1 初始化nativeAd](#331-%E5%88%9D%E5%A7%8B%E5%8C%96nativead)
-        - [3.3.2 加载原生广告](#332-%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%94%9F%E5%B9%BF%E5%91%8A)
-        - [3.3.3 渲染曝光](#333-%E6%B8%B2%E6%9F%93%E6%9B%9D%E5%85%89)
-        - [3.3.4 广告拉取状态及点击回调](#334-%E5%B9%BF%E5%91%8A%E6%8B%89%E5%8F%96%E7%8A%B6%E6%80%81%E5%8F%8A%E7%82%B9%E5%87%BB%E5%9B%9E%E8%B0%83)
-- [4 注意事项](#4-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
-    - [4.1 请求广告返回400错误](#41-%E8%AF%B7%E6%B1%82%E5%B9%BF%E5%91%8A%E8%BF%94%E5%9B%9E400%E9%94%99%E8%AF%AF)
-    - [4.2 展示广告时出现黑屏](#42-%E5%B1%95%E7%A4%BA%E5%B9%BF%E5%91%8A%E6%97%B6%E5%87%BA%E7%8E%B0%E9%BB%91%E5%B1%8F)
-    - [4.3 尽早请求广告](#43-%E5%B0%BD%E6%97%A9%E8%AF%B7%E6%B1%82%E5%B9%BF%E5%91%8A)
-    - [4.4 插屏广告与激励视频广告](#44-%E6%8F%92%E5%B1%8F%E5%B9%BF%E5%91%8A%E4%B8%8E%E6%BF%80%E5%8A%B1%E8%A7%86%E9%A2%91%E5%B9%BF%E5%91%8A)
-- [5 测试](#5-测试)
+- [1.概述](#1%e6%a6%82%e8%bf%b0)
+  - [1.1 面向读者](#11-%e9%9d%a2%e5%90%91%e8%af%bb%e8%80%85)
+  - [1.2 开发环境](#12-%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83)
+  - [1.3 术语介绍](#13-%e6%9c%af%e8%af%ad%e4%bb%8b%e7%bb%8d)
+- [2.SDK接入](#2sdk%e6%8e%a5%e5%85%a5)
+  - [2.1 CocoaPods(推荐)](#21-cocoapods%e6%8e%a8%e8%8d%90)
+    - [2.1.1 安装CocoaPods/Install Cocoapods](#211-%e5%ae%89%e8%a3%85cocoapodsinstall-cocoapods)
+    - [2.1.2 从终端切换至iOS项目根目录下，创建Podfile文件](#212-%e4%bb%8e%e7%bb%88%e7%ab%af%e5%88%87%e6%8d%a2%e8%87%b3ios%e9%a1%b9%e7%9b%ae%e6%a0%b9%e7%9b%ae%e5%bd%95%e4%b8%8b%e5%88%9b%e5%bb%bapodfile%e6%96%87%e4%bb%b6)
+    - [2.1.3 将ZPLAY Ads SDK加入到Podfile文件](#213-%e5%b0%86zplay-ads-sdk%e5%8a%a0%e5%85%a5%e5%88%b0podfile%e6%96%87%e4%bb%b6)
+    - [2.1.4 安装ZPLAY Ads SDK](#214-%e5%ae%89%e8%a3%85zplay-ads-sdk)
+  - [2.2 手动集成ZPLAY Ads SDK](#22-%e6%89%8b%e5%8a%a8%e9%9b%86%e6%88%90zplay-ads-sdk)
+    - [2.2.1 下载ZPLAY Ads sdk](#221-%e4%b8%8b%e8%bd%bdzplay-ads-sdk)
+    - [2.2.2 添加到工程](#222-%e6%b7%bb%e5%8a%a0%e5%88%b0%e5%b7%a5%e7%a8%8b)
+    - [2.2.3 添加ZPLAY Ads的依赖文件](#223-%e6%b7%bb%e5%8a%a0zplay-ads%e7%9a%84%e4%be%9d%e8%b5%96%e6%96%87%e4%bb%b6)
+    - [2.2.4 其它设置](#224-%e5%85%b6%e5%ae%83%e8%ae%be%e7%bd%ae)
+- [3.接入代码](#3%e6%8e%a5%e5%85%a5%e4%bb%a3%e7%a0%81)
+  - [3.1 激励视频/插屏广告](#31-%e6%bf%80%e5%8a%b1%e8%a7%86%e9%a2%91%e6%8f%92%e5%b1%8f%e5%b9%bf%e5%91%8a)
+    - [3.1.1 初始化视频/插屏](#311-%e5%88%9d%e5%a7%8b%e5%8c%96%e8%a7%86%e9%a2%91%e6%8f%92%e5%b1%8f)
+    - [3.1.2 展示广告](#312-%e5%b1%95%e7%a4%ba%e5%b9%bf%e5%91%8a)
+    - [3.1.3 判断广告是否加载完成](#313-%e5%88%a4%e6%96%ad%e5%b9%bf%e5%91%8a%e6%98%af%e5%90%a6%e5%8a%a0%e8%bd%bd%e5%ae%8c%e6%88%90)
+    - [3.1.4 获取奖励](#314-%e8%8e%b7%e5%8f%96%e5%a5%96%e5%8a%b1)
+    - [3.1.5 请求下一条广告](#315-%e8%af%b7%e6%b1%82%e4%b8%8b%e4%b8%80%e6%9d%a1%e5%b9%bf%e5%91%8a)
+    - [3.1.6 PlayableAdsDelegate返回广告状态的回调](#316-playableadsdelegate%e8%bf%94%e5%9b%9e%e5%b9%bf%e5%91%8a%e7%8a%b6%e6%80%81%e7%9a%84%e5%9b%9e%e8%b0%83)
+  - [3.2 原生广告(托管渲染)接入代码](#32-%e5%8e%9f%e7%94%9f%e5%b9%bf%e5%91%8a%e6%89%98%e7%ae%a1%e6%b8%b2%e6%9f%93%e6%8e%a5%e5%85%a5%e4%bb%a3%e7%a0%81)
+    - [3.2.1 初始化nativeExpressAd](#321-%e5%88%9d%e5%a7%8b%e5%8c%96nativeexpressad)
+    - [3.2.2 加载原生广告](#322-%e5%8a%a0%e8%bd%bd%e5%8e%9f%e7%94%9f%e5%b9%bf%e5%91%8a)
+    - [3.2.3 渲染曝光](#323-%e6%b8%b2%e6%9f%93%e6%9b%9d%e5%85%89)
+    - [3.2.4 广告拉取状态及点击回调](#324-%e5%b9%bf%e5%91%8a%e6%8b%89%e5%8f%96%e7%8a%b6%e6%80%81%e5%8f%8a%e7%82%b9%e5%87%bb%e5%9b%9e%e8%b0%83)
+  - [3.3 原生广告(自渲染)接入代码](#33-%e5%8e%9f%e7%94%9f%e5%b9%bf%e5%91%8a%e8%87%aa%e6%b8%b2%e6%9f%93%e6%8e%a5%e5%85%a5%e4%bb%a3%e7%a0%81)
+    - [3.3.1 初始化nativeAd](#331-%e5%88%9d%e5%a7%8b%e5%8c%96nativead)
+    - [3.3.2 加载原生广告](#332-%e5%8a%a0%e8%bd%bd%e5%8e%9f%e7%94%9f%e5%b9%bf%e5%91%8a)
+    - [3.3.3 渲染曝光](#333-%e6%b8%b2%e6%9f%93%e6%9b%9d%e5%85%89)
+    - [3.3.4 广告拉取状态及点击回调](#334-%e5%b9%bf%e5%91%8a%e6%8b%89%e5%8f%96%e7%8a%b6%e6%80%81%e5%8f%8a%e7%82%b9%e5%87%bb%e5%9b%9e%e8%b0%83)
+  - [3.4 Banner 接入代码](#34-banner-%e6%8e%a5%e5%85%a5%e4%bb%a3%e7%a0%81)
+    - [3.4.1 初始化 Banner](#341-%e5%88%9d%e5%a7%8b%e5%8c%96-banner)
+    - [3.4.2 请求 Banner](#342-%e8%af%b7%e6%b1%82-banner)
+    - [3.4.3 实现代理方法及展示](#343-%e5%ae%9e%e7%8e%b0%e4%bb%a3%e7%90%86%e6%96%b9%e6%b3%95%e5%8f%8a%e5%b1%95%e7%a4%ba)
+- [4 注意事项](#4-%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9)
+  - [4.1 请求广告返回400错误](#41-%e8%af%b7%e6%b1%82%e5%b9%bf%e5%91%8a%e8%bf%94%e5%9b%9e400%e9%94%99%e8%af%af)
+  - [4.2 展示广告时出现黑屏](#42-%e5%b1%95%e7%a4%ba%e5%b9%bf%e5%91%8a%e6%97%b6%e5%87%ba%e7%8e%b0%e9%bb%91%e5%b1%8f)
+  - [4.3 尽早请求广告](#43-%e5%b0%bd%e6%97%a9%e8%af%b7%e6%b1%82%e5%b9%bf%e5%91%8a)
+  - [4.4 插屏广告与激励视频广告](#44-%e6%8f%92%e5%b1%8f%e5%b9%bf%e5%91%8a%e4%b8%8e%e6%bf%80%e5%8a%b1%e8%a7%86%e9%a2%91%e5%b9%bf%e5%91%8a)
+  - [4.5 GDPR](#45-gdpr)
+    - [设置GDPR](#%e8%ae%be%e7%bd%aegdpr)
+- [5 测试](#5-%e6%b5%8b%e8%af%95)
 
 
 ## 1.概述
@@ -326,6 +332,56 @@ PANativeAdDelegate提供广告拉取状态和点击的回调，您可通过此�
   
 }
 ```
+### 3.4 Banner 接入代码
+#### 3.4.1 初始化 Banner
+```
+#import <PlayableAds/AtmosplayAdsBanner.h>
+@interface AtmosplayAdsBannerViewController () <AtmosplayAdsBannerDelegate>
+@property (nonatomic) AtmosplayAdsBanner *bannerView;
+@end
+
+@implementation AtmosplayAdsBannerViewController
+- (void)initBanner {
+    self.bannerView =
+        [[AtmosplayAdsBanner alloc] initWithAdUnitID:@"YOUR_ADUNIT_ID" appID:@"YOUR_APP_ID" rootViewController:self];
+    self.bannerView.delegate = self;
+    self.bannerView.bannerSize = kAtmosplayAdsBanner320x50;
+}
+@end
+```
+#### 3.4.2 请求 Banner
+```
+- (void)requestBanner {
+    if (!self.bannerView) {
+        return;
+    }
+    [self.bannerView loadAd];
+}
+```
+#### 3.4.3 实现代理方法及展示
+```
+#pragma mark - banner view delegate
+/// Tells the delegate that an ad has been successfully loaded.
+- (void)atmosplayAdsBannerViewDidLoad:(AtmosplayAdsBanner *)bannerView {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CGFloat y = self.view.frame.size.height - (bannerView.frame.size.height / 2);
+        if (@available(iOS 11, *)) {
+            y -= self.view.safeAreaInsets.bottom;
+        }
+        bannerView.center = CGPointMake(self.view.frame.size.width / 2, y);
+        [self.view addSubview:bannerView];
+    });
+}
+
+/// Tells the delegate that a request failed.
+- (void)atmosplayAdsBannerView:(AtmosplayAdsBanner *)bannerView didFailWithError:(NSError *)error {
+}
+
+/// Tells the delegate that the banner view has been clicked.
+- (void)atmosplayAdsBannerViewDidClick:(AtmosplayAdsBanner *)bannerView {
+}
+
+```
 
 ## 4 注意事项
 
@@ -348,6 +404,23 @@ PANativeAdDelegate提供广告拉取状态和点击的回调，您可通过此�
 
 * 从2.0.3版本开始，您在申请广告位时可选择插屏广告还是激励视频广告，若广告位是插屏，广告开始后可中途关闭，且不会下发奖励。若广告位是激励视频，广告不可中途关闭，播放完成会给用户下发奖励。
 * 当您的广告位是插屏广告形式时，不会触发`- (void)playableAdsDidRewardUser:(PlayableAds *)ads`方法，其余方法均与激励视频广告位一致。
+
+### 4.5 GDPR
+本文件是为遵守欧洲联盟的一般数据保护条例(GDPR)而提供的。 自 YumiMediationSDK 4.1.0 起，如果您正在收集用户的信息，您可以使用下面提供的api将此信息通知给 YumiMediationSDK 和部分三方平台。 更多信息请查看我们的官网。
+
+#### 设置GDPR
+```
+typedef enum : NSUInteger {
+    /// The user has granted consent for personalized ads.
+    PlayableAdsConsentStatusPersonalized,
+    /// The user has granted consent for non-personalized ads.
+    PlayableAdsConsentStatusNonPersonalized,
+    /// The user has neither granted nor declined consent for personalized or non-personalized ads.
+    PlayableAdsConsentStatusUnknown,
+} PlayableAdsConsentStatus;
+
+[[PlayableAdsGDPR sharedGDPRManager] updatePlayableAdsConsentStatus:PlayableAdsConsentStatusPersonalized];
+```
 
 ## 5 测试
 

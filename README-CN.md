@@ -335,7 +335,7 @@ PANativeAdDelegate提供广告拉取状态和点击的回调，您可通过此�
 ```
 ### 3.4 Banner 接入代码
 #### 3.4.1 初始化 Banner
-```
+```objective-c
 #import <PlayableAds/AtmosplayAdsBanner.h>
 @interface AtmosplayAdsBannerViewController () <AtmosplayAdsBannerDelegate>
 @property (nonatomic) AtmosplayAdsBanner *bannerView;
@@ -351,7 +351,7 @@ PANativeAdDelegate提供广告拉取状态和点击的回调，您可通过此�
 @end
 ```
 #### 3.4.2 请求 Banner
-```
+```objective-c
 - (void)requestBanner {
     if (!self.bannerView) {
         return;
@@ -360,7 +360,7 @@ PANativeAdDelegate提供广告拉取状态和点击的回调，您可通过此�
 }
 ```
 #### 3.4.3 实现代理方法及展示
-```
+```objective-c
 #pragma mark - banner view delegate
 /// Tells the delegate that an ad has been successfully loaded.
 - (void)atmosplayAdsBannerViewDidLoad:(AtmosplayAdsBanner *)bannerView {
@@ -383,7 +383,7 @@ PANativeAdDelegate提供广告拉取状态和点击的回调，您可通过此�
 }
 ```
 #### 3.4.4 销毁 Banner
-```
+```objective-c
 - (void)destroyBanner {
     self.bannerView.delegate = nil;
     [self.bannerView removeFromSuperview];
@@ -417,7 +417,7 @@ PANativeAdDelegate提供广告拉取状态和点击的回调，您可通过此�
 本文件是为遵守欧洲联盟的一般数据保护条例(GDPR)而提供的。 自 YumiMediationSDK 4.1.0 起，如果您正在收集用户的信息，您可以使用下面提供的api将此信息通知给 YumiMediationSDK 和部分三方平台。 更多信息请查看我们的官网。
 
 #### 设置GDPR
-```
+```objective-c
 typedef enum : NSUInteger {
     /// The user has granted consent for personalized ads.
     PlayableAdsConsentStatusPersonalized,

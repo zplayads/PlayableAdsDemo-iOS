@@ -8,6 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    kZplayAdsType_interstitial = 1 << 1,
+    kZplayAdsType_native,
+    kZplayAdsType_nativeExpress,
+    kZplayAdsType_video,
+} kZplayAdsType;
+
+@interface PAAdConfigInfo : NSObject
+
+@property (nonatomic) NSString *appId;
+@property (nonatomic) NSString *placementId;
+@property (nonatomic) kZplayAdsType adType;
+
+@end
+
 @interface PADemoUtils : NSObject
 
 + (instancetype)shared;
@@ -24,5 +39,8 @@
 // channelID
 - (void)setChannelID:(NSString *)channelID;
 - (NSString *)channelID;
+
+- (void)saveAdInfo:(PAAdConfigInfo *)adConfig;
+- (PAAdConfigInfo *)getAdInfo:(kZplayAdsType)adType;
 
 @end

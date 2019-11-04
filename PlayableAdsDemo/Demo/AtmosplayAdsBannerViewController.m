@@ -276,13 +276,18 @@
 /// Tells the delegate that an ad has been successfully loaded.
 - (void)atmosplayAdsBannerViewDidLoad:(AtmosplayAdsBanner *)bannerView {
     [self addLog:@"atmosplayAdsBannerViewDidLoad"];
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        CGFloat y = self.view.frame.size.height - (bannerView.frame.size.height / 2);
-        if (@available(iOS 11, *)) {
-            y -= self.view.safeAreaInsets.bottom;
+        if (weakSelf.bannerView) {
+            [weakSelf.bannerView removeFromSuperview];
         }
-        bannerView.center = CGPointMake(self.view.frame.size.width / 2, y);
-        [self.view addSubview:bannerView];
+        weakSelf.bannerView = bannerView;
+        CGFloat y = weakSelf.view.frame.size.height - (bannerView.frame.size.height / 2);
+        if (@available(iOS 11, *)) {
+            y -= weakSelf.view.safeAreaInsets.bottom;
+        }
+        bannerView.center = CGPointMake(weakSelf.view.frame.size.width / 2, y);
+        [weakSelf.view addSubview:weakSelf.bannerView];
     });
 }
 

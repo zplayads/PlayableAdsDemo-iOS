@@ -34,10 +34,10 @@
     self.title = @"Banner";
     [self setUpUI];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-    selector:@selector(orientationChanged:)
-        name:@"UIDeviceOrientationDidChangeNotification"
-      object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//    selector:@selector(orientationChanged:)
+//        name:@"UIDeviceOrientationDidChangeNotification"
+//      object:nil];
 }
 
 - (BOOL)shouldAutorotate {
@@ -77,6 +77,7 @@
         [self setUpUI];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"--- %@",NSStringFromCGRect(self.bannerView.frame));
         if (self.bannerView) {
             CGFloat y = self.view.frame.size.height - (self.bannerView.frame.size.height / 2);
             if (@available(ios 11.0, *)) {
@@ -84,6 +85,7 @@
             }
             self.bannerView.center = CGPointMake(self.view.frame.size.width / 2, y);
         }
+        NSLog(@"---end %@",NSStringFromCGRect(self.bannerView.frame));
     });
 }
 

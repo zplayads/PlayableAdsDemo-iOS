@@ -28,7 +28,7 @@
     self.title = self.isVideo ? @"Video" : @"Interstitial";
 
     if (!self.isVideo) {
-        self.adUnitTextField.text = @"0868EBC0-7768-40CA-4226-F9924221C8EB";
+        self.adUnitTextField.text = @"iOSDemoAdUnitInterstitial";
     }
 
     [self setDelegate];

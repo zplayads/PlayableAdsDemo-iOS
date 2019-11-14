@@ -12,12 +12,18 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                                                                                    \
     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
+@implementation PAAdConfigInfo
+
+@end
+
 @interface PADemoUtils () {
     NSString *_channelID;
 }
 @property (nonatomic) NSFileManager *fm;
 @property (nonatomic, assign) BOOL autoAd;
 @property (nonatomic) NSString *channelID;
+
+@property (nonatomic) NSMutableDictionary<NSString *, PAAdConfigInfo *> *allAdInfo;
 
 @end
 
@@ -101,7 +107,31 @@
     return _channelID;
 }
 
-- (void)dealloc {
+#pragma mark : - ad config
+
+- (void)saveAdInfo:(PAAdConfigInfo *)adConfig {
+    if (!adConfig) {
+        return;
+    }
+    NSString *key = [self generateAdkey:adConfig.adType];
+    [self.allAdInfo setValue:adConfig forKey:key];
+}
+- (PAAdConfigInfo *)getAdInfo:(kZplayAdsType)adType {
+    NSString *key = [self generateAdkey:adType];
+
+    return self.allAdInfo[key];
+}
+
+- (NSString *)generateAdkey:(kZplayAdsType)adType {
+
+    return [NSString stringWithFormat:@"adType_%lu", (unsigned long)adType];
+}
+
+- (NSMutableDictionary<NSString *, PAAdConfigInfo *> *)allAdInfo {
+    if (!_allAdInfo) {
+        _allAdInfo = [NSMutableDictionary dictionaryWithCapacity:1];
+    }
+    return _allAdInfo;
 }
 
 @end
